@@ -1,51 +1,112 @@
+/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #ecf0f1;
+    font-family: 'Arial', sans-serif;
+    background-color: #101010; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
     margin: 0;
     padding: 0;
-    color: #2c3e50;
+    transition: background-color 0.3s ease;
 }
 
 header {
-    background-color: #34495e;
-    color: white;
-    text-align: center;
+    background-color: #1b1b1b; /* Fondo oscuro para el header */
     padding: 20px;
-}
-
-#categories {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
-    gap: 20px;
-}
-
-.category {
-    width: 30%;
-    background-color: #2c3e50;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-.category h2 {
     text-align: center;
-    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    position: relative;
 }
 
-.category ul {
-    list-style-type: none;
+header .logo img {
+    max-width: 180px;
+    transition: transform 0.3s ease;
+}
+
+header .logo img:hover {
+    transform: scale(1.1);
+}
+
+nav ul {
+    list-style: none;
     padding: 0;
-}
-
-.category ul li {
     margin: 10px 0;
+    display: flex;
+    justify-content: center;
 }
 
-.category ul li a {
-    color: #fff;
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #4a90e2; /* Azul brillante */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffcc00; /* Color dorado para el hover */
+}
+
+/* Estilos para las secciones */
+#content {
+    padding: 40px 20px;
+    background-color: #121212;
+}
+
+h2, h3 {
+    color: #4a90e2;
+}
+
+.carousel {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.carousel img {
+    width: 300px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.carousel img:hover {
+    transform: scale(1.05);
+}
+
+.categoria {
+    background-color: #333;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.categoria h3 {
+    color: #ffcc00; /* Color dorado para los títulos de las categorías */
+}
+
+.categoria p {
+    color: #aaa;
+}
+
+/* Estilo para el footer */
+footer {
+    background-color: #1b1b1b;
+    color: #aaa;
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+footer a {
+    color: #4a90e2;
     text-decoration: none;
 }
 
-.category ul li a:hover {
-    color: #f39c12;
+footer a:hover {
+    text-decoration: underline;
 }
