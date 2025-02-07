@@ -9,38 +9,31 @@
 <body>
 
     <header>
-        <div class="logo">
-            <img src="assets/images/logo.png" alt="Exorcist Fandub">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#animes">Animes</a></li>
-                <li><a href="#peliculas">Películas</a></li>
-                <li><a href="#series">Series</a></li>
-                <li><a href="#doramas">Doramas</a></li>
-            </ul>
-        </nav>
+        <h1>Bienvenido a Exorcist Fandub</h1>
     </header>
 
-    <section id="content">
-        <h1>Contenido Destacado</h1>
-        <div id="animes">
-            <!-- Aquí van los animes -->
+    <div id="categories">
+        <div class="category" id="anime">
+            <h2>Anime</h2>
+            <ul id="anime-list">
+                <!-- Aquí se llenará dinámicamente con los animes -->
+            </ul>
         </div>
-        <div id="peliculas">
-            <!-- Aquí van las películas -->
-        </div>
-        <div id="series">
-            <!-- Aquí van las series -->
-        </div>
-        <div id="doramas">
-            <!-- Aquí van los doramas -->
-        </div>
-    </section>
 
-    <footer>
-        <p>&copy; 2025 Exorcist Fandub. Todos los derechos reservados.</p>
-    </footer>
+        <div class="category" id="movies">
+            <h2>Películas</h2>
+            <ul id="movies-list">
+                <!-- Aquí se llenará dinámicamente con las películas -->
+            </ul>
+        </div>
+
+        <div class="category" id="series">
+            <h2>Series</h2>
+            <ul id="series-list">
+                <!-- Aquí se llenará dinámicamente con las series -->
+            </ul>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
