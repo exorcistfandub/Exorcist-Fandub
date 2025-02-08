@@ -6,56 +6,6 @@
     <title>Exorcist Fandub</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background: linear-gradient(to bottom, #000428, #004e92);
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            text-align: center;
-            padding: 20px;
-        }
-        .logo {
-            width: 150px;
-        }
-        .titulo {
-            font-family: 'Uncial Antiqua', cursive;
-            font-size: 2rem;
-        }
-        .banner img {
-            width: 100%;
-            height: auto;
-        }
-        .seccion-titulo {
-            text-align: center;
-            font-size: 1.8rem;
-            margin-top: 20px;
-        }
-        .contenedor-categorias {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-        .tarjeta {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        .tarjeta:hover {
-            transform: scale(1.1);
-        }
-        .tarjeta img {
-            width: 150px;
-            height: auto;
-            border-radius: 5px;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -69,16 +19,22 @@
     
     <main>
         <h2 class="seccion-titulo">Últimos Estrenos</h2>
-        <div class="contenedor-categorias">
-            <div class="tarjeta">
-                <img src="assets/images/ejemplo.jpg" alt="Serie Ejemplo">
-                <p>Serie Ejemplo</p>
-            </div>
-            <div class="tarjeta">
-                <img src="assets/images/ejemplo2.jpg" alt="Dorama Ejemplo">
-                <p>Dorama Ejemplo</p>
-            </div>
+        <div class="carrusel" id="carrusel">
+            <!-- Carrusel dinámico -->
+        </div>
+        
+        <h2 class="seccion-titulo">Series y Doramas</h2>
+        <div class="filtros">
+            <button onclick="filtrarEstado('todos')">Todos</button>
+            <button onclick="filtrarEstado('emision')">En emisión</button>
+            <button onclick="filtrarEstado('finalizado')">Finalizado</button>
+        </div>
+        
+        <div class="contenedor-categorias" id="contenedorSeries">
+            <!-- Contenido dinámico -->
         </div>
     </main>
+    
+    <script src="js/script.js"></script>
 </body>
 </html>

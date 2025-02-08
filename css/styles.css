@@ -1,103 +1,66 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #101820;
+    background: linear-gradient(to bottom, #000428, #004e92);
     color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
-
 header {
     text-align: center;
     padding: 20px;
-    background-color: #1a2b3c;
 }
-
-h1 {
-    font-size: 2em;
-    color: white;
+.logo {
+    width: 150px;
 }
-
-section {
-    margin: 20px;
-    text-align: center;
+.titulo {
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 2rem;
 }
-
-form {
-    display: inline-block;
-    background-color: #1a2b3c;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-form label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-}
-
-form input, form select {
+.banner img {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #333;
-    border-radius: 5px;
+    height: auto;
 }
-
-form button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-form button:hover {
-    background-color: #45a049;
-}
-
-#contenidos-lista {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+.seccion-titulo {
+    text-align: center;
+    font-size: 1.8rem;
     margin-top: 20px;
 }
-
-.contenido {
-    width: 200px;
-    text-align: center;
-    background-color: #2e3b4e;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.contenedor-categorias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
 }
-
-.contenido img {
+.tarjeta {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+    width: 180px;
+}
+.tarjeta:hover {
+    transform: scale(1.1);
+}
+.tarjeta img {
     width: 100%;
     height: auto;
     border-radius: 5px;
 }
-
-.contenido h3 {
-    font-size: 18px;
-    margin-top: 10px;
+.filtros {
+    text-align: center;
+    margin: 20px 0;
 }
-
-.contenido p {
-    margin: 5px 0;
-    font-size: 14px;
-}
-
-.contenido .emision {
-    background-color: green;
+.filtros button {
+    background: #004e92;
     color: white;
-    padding: 2px 6px;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
     border-radius: 5px;
 }
-
-.contenido .finalizado {
-    background-color: red;
-    color: white;
-    padding: 2px 6px;
-    border-radius: 5px;
+.filtros button:hover {
+    background: #0066cc;
 }

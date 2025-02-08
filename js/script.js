@@ -1,43 +1,38 @@
-document.getElementById("form-agregar-contenido").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    // Obtener los datos del formulario
-    const titulo = document.getElementById("titulo").value;
-    const tipo = document.getElementById("tipo").value;
-    const estado = document.getElementById("estado").value;
-    const imagen = document.getElementById("imagen").value;
-
-    // Crear un objeto con el nuevo contenido
-    const nuevoContenido = {
-        titulo,
-        tipo,
-        estado,
-        imagen
-    };
-
-    // Aquí puedes guardar el contenido en un archivo JSON, una base de datos, o simplemente imprimirlo en la consola
-    console.log("Contenido agregado:", nuevoContenido);
-
-    // Mostrar el contenido en la página principal
-    mostrarContenido(nuevoContenido);
-
-    // Limpiar el formulario
-    document.getElementById("form-agregar-contenido").reset();
+document.addEventListener("DOMContentLoaded", function () {
+    cargarCarrusel();
+    cargarContenido();
 });
 
-// Función para mostrar el contenido en la página principal
-function mostrarContenido(nuevoContenido) {
-    const listaContenidos = document.getElementById("contenidos-lista");
-
-    const nuevoElemento = document.createElement("div");
-    nuevoElemento.classList.add("contenido");
-
-    nuevoElemento.innerHTML = `
-        <img src="${nuevoContenido.imagen}" alt="${nuevoContenido.titulo}" />
-        <h3>${nuevoContenido.titulo}</h3>
-        <p>Tipo: ${nuevoContenido.tipo}</p>
-        <p>Estado: <span class="${nuevoContenido.estado}">${nuevoContenido.estado === 'emision' ? 'En emisión' : 'Finalizado'}</span></p>
+function cargarCarrusel() {
+    const carrusel = document.getElementById("carrusel");
+    carrusel.innerHTML = `
+        <div class="slide"><img src="assets/images/ejemplo.jpg" alt="Estreno 1"></div>
+        <div class="slide"><img src="assets/images/ejemplo2.jpg" alt="Estreno 2"></div>
     `;
+}
 
-    listaContenidos.appendChild(nuevoElemento);
+function cargarContenido() {
+    const contenedor = document.getElementById("contenedorSeries");
+    const contenido = [
+        { titulo: "Serie Ejemplo", imagen: "assets/images/ejemplo.jpg", estado: "emision" },
+        { titulo: "Dorama Ejemplo", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado" }
+    ];
+    
+    contenedor.innerHTML = contenido.map(item => `
+        <div class="tarjeta" data-estado="${item.estado}">
+            <img src="${item.imagen}" alt="${item.titulo}">
+            <p>${item.titulo}</p>
+        </div>
+    `).join('');
+}
+
+function filtrarEstado(estado) {
+    const tarjetas = document.querySelectorAll(".tarjeta");
+    tarjetas.forEach(tarjeta => {
+        if (estado === "todos" || tarjeta.getAttribute("data-estado") === estado) {
+            tarjeta.style.display = "block";
+        } else {
+            tarjeta.style.display = "none";
+        }
+    });
 }
