@@ -1,18 +1,11 @@
-// Función para filtrar contenido según la categoría seleccionada
-function filterContent(category) {
-    const allItems = document.querySelectorAll('.content-item');
-    
-    allItems.forEach(item => {
-        // Si la categoría del item coincide con la seleccionada, mostrarlo, sino ocultarlo
-        if (item.classList.contains(category)) {
-            item.classList.remove('hidden');
+function filterContent(status) {
+    let items = document.querySelectorAll('.content-item');
+
+    items.forEach(item => {
+        if (status === 'all') {
+            item.style.display = 'block';
         } else {
-            item.classList.add('hidden');
+            item.style.display = item.getAttribute('data-status') === status ? 'block' : 'none';
         }
     });
 }
-
-// Opcional: Mostrar todo el contenido al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-    filterContent('series');  // Cambia a 'doramas' o 'peliculas' si quieres ver otro grupo por defecto
-});

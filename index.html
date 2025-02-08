@@ -19,19 +19,31 @@
         <h2>Categorías</h2>
         <div class="categories">
             <div class="category">
-                <a href="#">Series</a>
-            </div>
-            <div class="category">
-                <a href="#">Doramas</a>
+                <a href="#">Series y Doramas</a>
             </div>
             <div class="category">
                 <a href="#">Películas</a>
             </div>
         </div>
+
+        <h2>Estados del Contenido</h2>
+        <div class="status-filter">
+            <button onclick="filterContent('all')">Todos</button>
+            <button onclick="filterContent('emision')">En Emisión</button>
+            <button onclick="filterContent('finalizado')">Finalizado</button>
+        </div>
+
+        <div id="series-list">
+            <div class="content-item" data-status="emision">
+                <h3>Serie 1</h3>
+                <p>Estado: En Emisión</p>
+            </div>
+            <div class="content-item" data-status="finalizado">
+                <h3>Serie 2</h3>
+                <p>Estado: Finalizado</p>
+            </div>
+        </div>
     </div>
 
     <footer>
-        <p>© 2025 Exorcist Fandub. Todos los derechos reservados.</p>
-    </footer>
-</body>
-</html>
+        <p>© 2025 Exor

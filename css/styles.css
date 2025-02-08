@@ -17,11 +17,11 @@ header {
 
 /* Logo con tamaño ajustado */
 header img {
-    max-width: 200px; /* Tamaño del logo ajustado */
+    max-width: 200px;
     height: auto;
 }
 
-/* Carrusel de imágenes de portada */
+/* Carrusel de imágenes */
 #carousel {
     width: 100%;
     height: 500px;
@@ -29,18 +29,13 @@ header img {
     position: relative;
 }
 
-/* Fondo del banner con ajuste */
 #carousel img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* Sección de contenido con categorías */
-#content {
-    padding: 20px;
-}
-
+/* Categorías */
 .categories {
     display: flex;
     justify-content: space-around;
@@ -61,30 +56,44 @@ header img {
     transform: scale(1.1);
 }
 
-/* Enlaces de categoría */
 .category a {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
 }
 
-footer {
+/* Filtros de estado */
+.status-filter {
     text-align: center;
+    margin: 20px 0;
+}
+
+.status-filter button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
     padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.status-filter button:hover {
+    background-color: #0056b3;
+}
+
+/* Lista de contenido */
+#series-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.content-item {
     background-color: #222;
-    margin-top: 20px;
-}
-
-/* Ajuste para que el texto no se corte */
-html, body {
-    height: 100%;
-}
-
-#content {
-    min-height: 80vh;
-}
-
-footer {
-    position: relative;
-    bottom: 0;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
 }
