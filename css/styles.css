@@ -5,31 +5,42 @@ body {
     margin: 0;
     padding: 0;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+main {
+    min-height: 100vh; /* Hace que el contenido ocupe al menos el 100% de la altura de la ventana */
+    padding-bottom: 20px;
+}
+
 header {
     text-align: center;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-bottom: 2px solid #004e92;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
+
 .logo {
     width: 150px;
 }
+
 .titulo {
     font-family: 'Uncial Antiqua', cursive;
     font-size: 2rem;
-    color: #fff;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
 }
+
 .banner img {
     width: 100%;
     height: auto;
 }
+
 .seccion-titulo {
     text-align: center;
     font-size: 1.8rem;
     margin-top: 20px;
 }
+
 .contenedor-categorias {
     display: flex;
     flex-wrap: wrap;
@@ -37,28 +48,31 @@ header {
     gap: 20px;
     padding: 20px;
 }
+
 .tarjeta {
     background: rgba(255, 255, 255, 0.1);
     padding: 15px;
     border-radius: 10px;
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s;
     width: 180px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
+
 .tarjeta:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
 }
+
 .tarjeta img {
     width: 100%;
     height: auto;
     border-radius: 5px;
 }
+
 .filtros {
     text-align: center;
     margin: 20px 0;
 }
+
 .filtros button {
     background: #004e92;
     color: white;
@@ -68,24 +82,7 @@ header {
     cursor: pointer;
     border-radius: 5px;
 }
+
 .filtros button:hover {
     background: #0066cc;
-}
-.filtros button.activo {
-    background: #0066cc;
-    color: #fff;
-}
-.carrusel {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}
-.slide {
-    display: none;
-    width: 100%;
-}
-.slide img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
 }
