@@ -3,16 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Exorcist Fandub - Disfruta de animes, doramas y películas en emisión o finalizados.">
+    <meta name="keywords" content="anime, dorama, películas, series, emisión, finalizado">
+    <meta name="author" content="Exorcist Fandub">
     <title>Panel de Administración - Exorcist Fandub</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    <style>
+        /* Optimización para móvil */
+        @media (max-width: 768px) {
+            .form-container {
+                width: 100%;
+                padding: 15px;
+            }
+            input, select, button {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Panel de Administración - Exorcist Fandub</h1>
     </header>
 
-    <!-- Sección para agregar nuevo contenido -->
-    <section>
+    <section class="form-container">
         <h2>Agregar nuevo contenido</h2>
         <form id="form-agregar-contenido">
             <label for="titulo">Título</label>
@@ -30,19 +46,13 @@
                 <option value="finalizado">Finalizado</option>
             </select>
 
-            <label for="imagen">Imagen</label>
+            <label for="imagen">Imagen (URL)</label>
             <input type="url" id="imagen" name="imagen" required>
 
             <button type="submit">Agregar</button>
         </form>
     </section>
 
-    <!-- Sección para mostrar los contenidos agregados -->
-    <section>
-        <h2>Contenido Agregado</h2>
-        <div id="contentList"></div> <!-- Aquí se mostrarán los contenidos agregados -->
-    </section>
-
-    <script src="js/admin.js"></script> <!-- Archivo JavaScript que manejará el formulario -->
+    <script src="js/script.js"></script>
 </body>
 </html>

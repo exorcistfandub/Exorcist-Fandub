@@ -1,4 +1,3 @@
-// Manejar la adición de nuevo contenido
 document.getElementById("form-agregar-contenido").addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -14,40 +13,36 @@ document.getElementById("form-agregar-contenido").addEventListener("submit", fun
         imagen
     };
 
-    // Crear el nuevo item y agregarlo al DOM
-    const contentList = document.getElementById('contentList');
-    const nuevoItem = document.createElement('div');
-    nuevoItem.classList.add('content-item');
-    nuevoItem.setAttribute('data-status', estado);  // Agregar el estado para el filtrado
+    console.log("Contenido agregado:", nuevoContenido);
 
-    nuevoItem.innerHTML = `
-        <img src="${imagen}" alt="${titulo}" class="content-image">
-        <p><strong>${titulo}</strong></p>
-        <p>${tipo}</p>
-        <p><em>Estado: ${estado}</em></p>
-    `;
-
-    contentList.appendChild(nuevoItem);
+    // Agregar la lógica para almacenar los datos en el servidor o base de datos aquí.
 
     // Limpiar el formulario
     document.getElementById("form-agregar-contenido").reset();
-    console.log("Contenido agregado:", nuevoContenido);
 });
 
-// Función para filtrar el contenido por estado
-document.getElementById("filterButton").addEventListener("click", function() {
-    const estadoSeleccionado = document.querySelector('input[name="status"]:checked').value;
-    filterContent(estadoSeleccionado);
-});
+// Ejemplo de manejo de comentarios
+const comentarios = [];
 
-// Función para mostrar/ocultar contenido según el estado
-function filterContent(estado) {
-    let items = document.querySelectorAll('.content-item');
-    items.forEach(item => {
-        if (estado === 'all') {
-            item.style.display = 'block';
-        } else {
-            item.style.display = item.getAttribute('data-status') === estado ? 'block' : 'none';
-        }
-    });
+function agregarComentario(contenidoID, texto) {
+    const comentario = {
+        contenidoID,
+        texto,
+        fecha: new Date().toLocaleString()
+    };
+    comentarios.push(comentario);
+    console.log("Comentario agregado:", comentario);
+}
+
+// Ejemplo de valoración
+const valoraciones = [];
+
+function agregarValoracion(contenidoID, puntuacion) {
+    const valoracion = {
+        contenidoID,
+        puntuacion,
+        fecha: new Date().toLocaleString()
+    };
+    valoraciones.push(valoracion);
+    console.log("Valoración agregada:", valoracion);
 }
