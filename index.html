@@ -3,50 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Exorcist Fandub - Tu portal de anime, series y películas. Encuentra tus contenidos favoritos con facilidad.">
+    <meta name="keywords" content="anime, series, películas, fandub, contenido">
+    <meta name="author" content="Exorcist Fandub">
     <title>Exorcist Fandub</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <header>
-        <img class="logo" src="assets/images/logo.png" alt="Exorcist Fandub">
-        <h1 class="titulo">Exorcist Fandub</h1>
-    </header>
-    
-    <section class="banner">
-        <img src="assets/images/banner.jpg" alt="Banner Exorcist Fandub">
-    </section>
+    <!-- Barra de búsqueda -->
+    <div class="search-bar">
+        <input type="text" id="search" placeholder="Buscar contenido..." aria-label="Buscar contenido">
+        <div id="search-results"></div>
+    </div>
 
-    <section class="seccion-titulo">
-        <h2>Últimos Estrenos</h2>
-    </section>
-
-    <section class="contenedor-categorias">
-        <div class="categoria" id="ultimos-estrenos">
-            <h3>Últimos Estrenos</h3>
-            <div id="carrusel" class="carrusel"></div>
-        </div>
-        
-        <div class="categoria" id="contenido">
-            <h3>Contenido</h3>
-            <div id="contenedorSeries" class="contenedor"></div>
-        </div>
-
-        <div class="categoria" id="series">
-            <h3>Series</h3>
-            <div id="contenedorSeries" class="contenedor"></div>
-        </div>
-
-        <div class="categoria" id="peliculas">
-            <h3>Películas</h3>
-            <div id="contenedorPeliculas" class="contenedor"></div>
+    <!-- Contenido principal -->
+    <section id="content">
+        <div class="content-item"> <!-- Ejemplo de tarjeta de contenido -->
+            <img src="images/sample.jpg" alt="Imagen del contenido">
+            <div class="content-info">
+                <h3>Título del contenido</h3>
+                <button class="favorite-btn">❤️</button>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2025 Exorcist Fandub</p>
-    </footer>
+    <!-- Modal de detalles del contenido -->
+    <div class="modal" id="content-modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h2>Detalles del contenido</h2>
+            <p id="content-description">Descripción del contenido...</p>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
 </html>
-
