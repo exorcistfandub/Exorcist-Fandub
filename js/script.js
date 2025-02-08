@@ -1,41 +1,52 @@
-// Cambiar entre modo claro y oscuro
-const toggleDarkModeButton = document.getElementById('toggle-darkmode');
-let darkMode = false;
+// Función para manejar el formulario de agregar contenido
+document.getElementById('add-content-form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-toggleDarkModeButton.addEventListener('click', () => {
-    darkMode = !darkMode;
-    document.body.style.background = darkMode ? 'linear-gradient(to bottom, #1e1e1e, #3a3a3a)' : 'linear-gradient(to bottom, #000428, #004e92)';
-    document.body.style.color = darkMode ? 'white' : 'black';
+    // Recoger los datos del formulario
+    const contentType = document.getElementById('content-type').value;
+    const contentTitle = document.getElementById('content-title').value;
+    const contentStatus = document.getElementById('content-status').value;
+    const contentImage = document.getElementById('content-image').value;
+
+    // Crear un objeto con los datos
+    const newContent = {
+        type: contentType,
+        title: contentTitle,
+        status: contentStatus,
+        image: contentImage
+    };
+
+    // Obtener los contenidos guardados en localStorage
+    let contents = JSON.parse(localStorage.getItem('contents')) || [];
+
+    // Añadir el nuevo contenido
+    contents.push(newContent);
+
+    // Guardar los contenidos en localStorage
+    localStorage.setItem('contents', JSON.stringify(contents));
+
+    // Mostrar un mensaje de éxito
+    alert('Contenido agregado correctamente');
+
+    // Limpiar el formulario
+    document.getElementById('add-content-form').reset();
 });
 
-// Filtrar contenido por búsqueda
-const searchInput = document.getElementById('search-input');
+// Cargar el contenido de localStorage y mostrarlo
+window.addEventListener('DOMContentLoaded', function() {
+    const contentList = document.getElementById('content-list');
+    const contents = JSON.parse(localStorage.getItem('contents')) || [];
 
-searchInput.addEventListener('input', function() {
-    const filter = searchInput.value.toLowerCase();
-    const items = document.querySelectorAll('.tarjeta');
+    contents.forEach(content => {
+        const contentElement = document.createElement('div');
+        contentElement.classList.add('tarjeta');
+        contentElement.setAttribute('data-status', content.status);
 
-    items.forEach(item => {
-        const title = item.querySelector('p').textContent.toLowerCase();
-        item.style.display = title.includes(filter) ? 'block' : 'none';
-    });
-});
+        contentElement.innerHTML = `
+            <img src="${content.image}" alt="${content.title}">
+            <p>${content.title}</p>
+        `;
 
-// Marcar contenido como favorito y almacenarlo en localStorage
-const favButtons = document.querySelectorAll('.fav-btn');
-
-favButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const currentItem = button.parentElement;
-        const itemTitle = currentItem.querySelector('p').textContent;
-
-        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        if (!favorites.includes(itemTitle)) {
-            favorites.push(itemTitle);
-        } else {
-            favorites = favorites.filter(fav => fav !== itemTitle);
-        }
-
-        localStorage.setItem('favorites', JSON.stringify(favorites));
+        contentList.appendChild(contentElement);
     });
 });
