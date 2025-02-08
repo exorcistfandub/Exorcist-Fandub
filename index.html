@@ -46,6 +46,7 @@
             border-radius: 10px;
             text-align: center;
             transition: transform 0.3s;
+            position: relative;
         }
         .tarjeta:hover {
             transform: scale(1.1);
@@ -54,6 +55,26 @@
             width: 150px;
             height: auto;
             border-radius: 5px;
+        }
+        .etiqueta {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        .filtro-btn {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #004e92;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
         }
     </style>
 </head>
@@ -69,16 +90,28 @@
     
     <main>
         <h2 class="seccion-titulo">Últimos Estrenos</h2>
+        <!-- Filtro de estado -->
+        <div style="text-align: center;">
+            <button class="filtro-btn" onclick="filterContent('all')">Mostrar Todo</button>
+            <button class="filtro-btn" onclick="filterContent('Emisión')">Emisión</button>
+            <button class="filtro-btn" onclick="filterContent('Finalizado')">Finalizado</button>
+        </div>
+        
         <div class="contenedor-categorias">
-            <div class="tarjeta">
+            <!-- Ejemplo de tarjeta con filtro por tipo y estado -->
+            <div class="tarjeta" data-type="Serie" data-status="Emisión">
                 <img src="assets/images/ejemplo.jpg" alt="Serie Ejemplo">
                 <p>Serie Ejemplo</p>
+                <span class="etiqueta">Serie</span>
             </div>
-            <div class="tarjeta">
+            <div class="tarjeta" data-type="Dorama" data-status="Finalizado">
                 <img src="assets/images/ejemplo2.jpg" alt="Dorama Ejemplo">
                 <p>Dorama Ejemplo</p>
+                <span class="etiqueta">Dorama</span>
             </div>
         </div>
     </main>
+
+    <script src="js/script.js"></script>
 </body>
 </html>

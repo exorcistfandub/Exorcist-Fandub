@@ -1,5 +1,5 @@
 function filterContent(status) {
-    let items = document.querySelectorAll('.content-item');
+    let items = document.querySelectorAll('.tarjeta');
 
     items.forEach(item => {
         if (status === 'all') {
