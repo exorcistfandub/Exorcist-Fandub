@@ -8,23 +8,18 @@
 </head>
 <body>
     <header>
-        <h1>Panel de Administración - Exorcist Fandub</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Ver Página</a></li>
-            </ul>
-        </nav>
+        <h1>Panel de Administración</h1>
     </header>
 
     <section>
         <h2>Agregar Nuevo Contenido</h2>
-        <form id="form-agregar-contenido" enctype="multipart/form-data">
+        <form id="form-agregar-contenido">
             <label for="titulo">Título</label>
             <input type="text" id="titulo" name="titulo" required>
 
             <label for="tipo">Tipo de Contenido</label>
             <select id="tipo" name="tipo" required>
-                <option value="anime">Anime</option>
+                <option value="serie">Serie</option>
                 <option value="dorama">Dorama</option>
             </select>
 
@@ -34,17 +29,13 @@
                 <option value="finalizado">Finalizado</option>
             </select>
 
-            <label for="imagen">Imagen</label>
+            <label for="imagen">Imagen de Portada</label>
             <input type="file" id="imagen" name="imagen" accept="image/*" required>
 
             <button type="submit">Agregar</button>
         </form>
     </section>
 
-    <footer>
-        <p>&copy; 2025 Exorcist Fandub. Todos los derechos reservados.</p>
-    </footer>
-
-    <script src="js/script.js"></script>
+    <script src="js/admin.js"></script>
 </body>
 </html>
