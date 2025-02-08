@@ -5,45 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exorcist Fandub</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #000428, #004e92);
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+        .logo {
+            width: 150px;
+        }
+        .titulo {
+            font-family: 'Uncial Antiqua', cursive;
+            font-size: 2rem;
+        }
+        .banner img {
+            width: 100%;
+            height: auto;
+        }
+        .seccion-titulo {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-top: 20px;
+        }
+        .contenedor-categorias {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .tarjeta {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .tarjeta:hover {
+            transform: scale(1.1);
+        }
+        .tarjeta img {
+            width: 150px;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <img src="assets/images/logo.png" alt="Exorcist Fandub Logo">
+        <img src="assets/images/logo.png" alt="Logo" class="logo">
+        <h1 class="titulo">Exorcist Fandub</h1>
     </header>
-
-    <div id="carousel">
-        <img src="assets/images/banner.jpg" alt="Banner">
-    </div>
-
-    <div id="content">
-        <h2>Categorías</h2>
-        <div class="categories">
-            <div class="category">
-                <a href="#">Series y Doramas</a>
+    
+    <section class="banner">
+        <img src="assets/images/banner.jpg" alt="Banner principal">
+    </section>
+    
+    <main>
+        <h2 class="seccion-titulo">Últimos Estrenos</h2>
+        <div class="contenedor-categorias">
+            <div class="tarjeta">
+                <img src="assets/images/ejemplo.jpg" alt="Serie Ejemplo">
+                <p>Serie Ejemplo</p>
             </div>
-            <div class="category">
-                <a href="#">Películas</a>
-            </div>
-        </div>
-
-        <h2>Estados del Contenido</h2>
-        <div class="status-filter">
-            <button onclick="filterContent('all')">Todos</button>
-            <button onclick="filterContent('emision')">En Emisión</button>
-            <button onclick="filterContent('finalizado')">Finalizado</button>
-        </div>
-
-        <div id="series-list">
-            <div class="content-item" data-status="emision">
-                <h3>Serie 1</h3>
-                <p>Estado: En Emisión</p>
-            </div>
-            <div class="content-item" data-status="finalizado">
-                <h3>Serie 2</h3>
-                <p>Estado: Finalizado</p>
+            <div class="tarjeta">
+                <img src="assets/images/ejemplo2.jpg" alt="Dorama Ejemplo">
+                <p>Dorama Ejemplo</p>
             </div>
         </div>
-    </div>
-
-    <footer>
-        <p>© 2025 Exor
+    </main>
+</body>
+</html>
