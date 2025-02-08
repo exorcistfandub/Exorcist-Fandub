@@ -7,24 +7,36 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- Navbar -->
     <header>
-        <div class="logo">
-            <h1>Exorcist Fandub</h1>
-        </div>
+        <h1>Exorcist Fandub</h1>
         <nav>
-            <a href="index.html">Inicio</a>
-            <a href="admin.html">Administrar</a>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Películas</a></li>
+                <li><a href="#">Series</a></li>
+            </ul>
         </nav>
     </header>
 
-    <section class="content">
-        <h2>Últimos Estrenos</h2>
-        <div class="carousel">
-            <!-- Carrusel de imágenes de portadas de contenido -->
-            <!-- Aquí se agregarán dinámicamente los contenidos -->
+    <section id="contenidos">
+        <h2>Últimos estrenos</h2>
+
+        <div class="contenido">
+            <img src="ruta-imagen" alt="Portada de Película">
+            <p class="titulo">Título de Película</p>
+            <p class="estado"><span class="estado-emision"></span> En emisión</p>
+        </div>
+
+        <div class="contenido">
+            <img src="ruta-imagen" alt="Portada de Serie">
+            <p class="titulo">Título de Serie</p>
+            <p class="estado"><span class="estado-finalizado"></span> Finalizado</p>
         </div>
     </section>
+
+    <footer>
+        <p>&copy; 2025 Exorcist Fandub</p>
+    </footer>
 
     <script src="js/script.js"></script>
 </body>
