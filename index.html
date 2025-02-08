@@ -7,24 +7,33 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Banner -->
+    <div class="banner">
+        <img src="assets/images/banner.jpg" alt="Banner">
+    </div>
 
-<header>
     <!-- Logo -->
-    <img src="assets/images/logo.png" alt="Exorcist Fandub">
-</header>
+    <div class="logo">
+        <img src="assets/images/logo.png" alt="Logo">
+    </div>
 
-<!-- Banner -->
-<img src="assets/images/banner.jpg" alt="Banner" class="banner">
+    <!-- Categorías -->
+    <div class="categories">
+        <button class="category-btn" onclick="filterContent('series')">Series</button>
+        <button class="category-btn" onclick="filterContent('doramas')">Doramas</button>
+        <button class="category-btn" onclick="filterContent('peliculas')">Películas</button>
+    </div>
 
-<!-- Contenido Principal -->
-<div class="container">
-    <h1>Bienvenidos a Exorcist Fandub</h1>
-    <p>Disfruta de animes, doramas y mucho más.</p>
-</div>
+    <!-- Contenido Dinámico -->
+    <div id="content" class="content">
+        <div class="content-item series">Serie 1</div>
+        <div class="content-item doramas">Dorama 1</div>
+        <div class="content-item peliculas">Película 1</div>
+        <div class="content-item series">Serie 2</div>
+        <div class="content-item doramas">Dorama 2</div>
+        <div class="content-item peliculas">Película 2</div>
+    </div>
 
-<footer>
-    <p>&copy; 2025 Exorcist Fandub</p>
-</footer>
-
+    <script src="js/script.js"></script>
 </body>
 </html>

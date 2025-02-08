@@ -1,43 +1,18 @@
-const animeList = [
-    { title: "Naruto", link: "#" },
-    { title: "One Piece", link: "#" },
-    { title: "Attack on Titan", link: "#" }
-];
-
-const moviesList = [
-    { title: "The Matrix", link: "#" },
-    { title: "Inception", link: "#" },
-    { title: "The Dark Knight", link: "#" }
-];
-
-const seriesList = [
-    { title: "Stranger Things", link: "#" },
-    { title: "Breaking Bad", link: "#" },
-    { title: "The Witcher", link: "#" }
-];
-
-function fillCategories() {
-    const animeUl = document.getElementById('anime-list');
-    const moviesUl = document.getElementById('movies-list');
-    const seriesUl = document.getElementById('series-list');
-
-    animeList.forEach(item => {
-        const li = document.createElement('li');
-        li.innerHTML = `<a href="${item.link}">${item.title}</a>`;
-        animeUl.appendChild(li);
-    });
-
-    moviesList.forEach(item => {
-        const li = document.createElement('li');
-        li.innerHTML = `<a href="${item.link}">${item.title}</a>`;
-        moviesUl.appendChild(li);
-    });
-
-    seriesList.forEach(item => {
-        const li = document.createElement('li');
-        li.innerHTML = `<a href="${item.link}">${item.title}</a>`;
-        seriesUl.appendChild(li);
+// Función para filtrar contenido según la categoría seleccionada
+function filterContent(category) {
+    const allItems = document.querySelectorAll('.content-item');
+    
+    allItems.forEach(item => {
+        // Si la categoría del item coincide con la seleccionada, mostrarlo, sino ocultarlo
+        if (item.classList.contains(category)) {
+            item.classList.remove('hidden');
+        } else {
+            item.classList.add('hidden');
+        }
     });
 }
 
-window.onload = fillCategories;
+// Opcional: Mostrar todo el contenido al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    filterContent('series');  // Cambia a 'doramas' o 'peliculas' si quieres ver otro grupo por defecto
+});

@@ -1,43 +1,70 @@
-/* Estilos generales */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #111;
-    color: white;
+/* Reseteo de márgenes */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-/* Estilo para el logo */
-header img {
-    width: 200px; /* Ajustamos el tamaño del logo */
-    height: auto;
-    margin: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Estilo para el banner */
-.banner {
+/* Banner */
+.banner img {
     width: 100%;
     height: auto;
-    max-height: 300px; /* Limita la altura máxima del banner */
-    object-fit: cover;
 }
 
-/* Estilo para el contenido */
-.container {
-    padding: 20px;
-}
-
-/* Ajuste para el texto */
-h1, p {
+/* Logo */
+.logo {
     text-align: center;
     margin: 20px 0;
 }
 
-footer {
-    background-color: #333;
-    padding: 10px 0;
-    text-align: center;
+.logo img {
+    max-width: 200px;
+    height: auto;
+}
+
+/* Categorías */
+.categories {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.category-btn {
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.category-btn:hover {
+    background-color: #155a8a;
+}
+
+/* Contenido */
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.content-item {
+    width: 30%;
+    margin: 10px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.content-item:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos para ocultar contenido que no pertenece a la categoría seleccionada */
+.hidden {
+    display: none;
 }
