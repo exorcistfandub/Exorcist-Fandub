@@ -14,20 +14,34 @@ function cargarCarrusel() {
 
 function cargarContenido() {
     const contenido = [
-        { titulo: "Serie Ejemplo", imagen: "assets/images/ejemplo.jpg", estado: "emision" },
-        { titulo: "Película Ejemplo", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado" }
+        { titulo: "Serie Ejemplo", imagen: "assets/images/ejemplo.jpg", estado: "emision", tipo: "serie" },
+        { titulo: "Película Ejemplo", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado", tipo: "pelicula" },
+        { titulo: "Dorama Ejemplo", imagen: "assets/images/ejemplo3.jpg", estado: "finalizado", tipo: "serie" }
     ];
-    
-    const carruselContenido = document.getElementById("contenido");
-    carruselContenido.innerHTML = contenido.map(item => `
+
+    // Cargar contenido general
+    const contenedorContenido = document.getElementById("contenedorContenido");
+    contenedorContenido.innerHTML = contenido.map(item => `
         <div class="tarjeta" data-estado="${item.estado}">
             <img src="${item.imagen}" alt="${item.titulo}">
             <p>${item.titulo}</p>
         </div>
     `).join('');
-    
+
+    // Cargar solo series
     const contenedorSeries = document.getElementById("contenedorSeries");
-    contenedorSeries.innerHTML = contenido.map(item => `
+    const series = contenido.filter(item => item.tipo === "serie");
+    contenedorSeries.innerHTML = series.map(item => `
+        <div class="tarjeta" data-estado="${item.estado}">
+            <img src="${item.imagen}" alt="${item.titulo}">
+            <p>${item.titulo}</p>
+        </div>
+    `).join('');
+
+    // Cargar solo películas
+    const contenedorPeliculas = document.getElementById("contenedorPeliculas");
+    const peliculas = contenido.filter(item => item.tipo === "pelicula");
+    contenedorPeliculas.innerHTML = peliculas.map(item => `
         <div class="tarjeta" data-estado="${item.estado}">
             <img src="${item.imagen}" alt="${item.titulo}">
             <p>${item.titulo}</p>
