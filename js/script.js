@@ -1,52 +1,53 @@
-// Función para manejar el formulario de agregar contenido
-document.getElementById('add-content-form').addEventListener('submit', function(event) {
+// Manejar la adición de nuevo contenido
+document.getElementById("form-agregar-contenido").addEventListener("submit", function(event) {
     event.preventDefault();
 
-    // Recoger los datos del formulario
-    const contentType = document.getElementById('content-type').value;
-    const contentTitle = document.getElementById('content-title').value;
-    const contentStatus = document.getElementById('content-status').value;
-    const contentImage = document.getElementById('content-image').value;
+    const titulo = document.getElementById("titulo").value;
+    const tipo = document.getElementById("tipo").value;
+    const estado = document.getElementById("estado").value;
+    const imagen = document.getElementById("imagen").value;
 
-    // Crear un objeto con los datos
-    const newContent = {
-        type: contentType,
-        title: contentTitle,
-        status: contentStatus,
-        image: contentImage
+    const nuevoContenido = {
+        titulo,
+        tipo,
+        estado,
+        imagen
     };
 
-    // Obtener los contenidos guardados en localStorage
-    let contents = JSON.parse(localStorage.getItem('contents')) || [];
+    // Crear el nuevo item y agregarlo al DOM
+    const contentList = document.getElementById('contentList');
+    const nuevoItem = document.createElement('div');
+    nuevoItem.classList.add('content-item');
+    nuevoItem.setAttribute('data-status', estado);  // Agregar el estado para el filtrado
 
-    // Añadir el nuevo contenido
-    contents.push(newContent);
+    nuevoItem.innerHTML = `
+        <img src="${imagen}" alt="${titulo}" class="content-image">
+        <p><strong>${titulo}</strong></p>
+        <p>${tipo}</p>
+        <p><em>Estado: ${estado}</em></p>
+    `;
 
-    // Guardar los contenidos en localStorage
-    localStorage.setItem('contents', JSON.stringify(contents));
-
-    // Mostrar un mensaje de éxito
-    alert('Contenido agregado correctamente');
+    contentList.appendChild(nuevoItem);
 
     // Limpiar el formulario
-    document.getElementById('add-content-form').reset();
+    document.getElementById("form-agregar-contenido").reset();
+    console.log("Contenido agregado:", nuevoContenido);
 });
 
-// Cargar el contenido de localStorage y mostrarlo
-window.addEventListener('DOMContentLoaded', function() {
-    const contentList = document.getElementById('content-list');
-    const contents = JSON.parse(localStorage.getItem('contents')) || [];
+// Función para filtrar el contenido por estado
+document.getElementById("filterButton").addEventListener("click", function() {
+    const estadoSeleccionado = document.querySelector('input[name="status"]:checked').value;
+    filterContent(estadoSeleccionado);
+});
 
-    contents.forEach(content => {
-        const contentElement = document.createElement('div');
-        contentElement.classList.add('tarjeta');
-        contentElement.setAttribute('data-status', content.status);
-
-        contentElement.innerHTML = `
-            <img src="${content.image}" alt="${content.title}">
-            <p>${content.title}</p>
-        `;
-
-        contentList.appendChild(contentElement);
+// Función para mostrar/ocultar contenido según el estado
+function filterContent(estado) {
+    let items = document.querySelectorAll('.content-item');
+    items.forEach(item => {
+        if (estado === 'all') {
+            item.style.display = 'block';
+        } else {
+            item.style.display = item.getAttribute('data-status') === estado ? 'block' : 'none';
+        }
     });
-});
+}

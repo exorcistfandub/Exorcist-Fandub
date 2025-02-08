@@ -3,34 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Exorcist Fandub es un sitio de animes, doramas y películas en fandub.">
-    <meta name="keywords" content="fandub, anime, dorama, series, películas">
-    <meta name="author" content="Exorcist Fandub">
     <title>Exorcist Fandub</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    <meta name="description" content="Exorcist Fandub es un sitio web de animes, doramas y películas dobladas al español con opciones de emisión y finalizado.">
+    <meta name="keywords" content="anime, doramas, películas, doblaje, español, Exorcist Fandub">
+    <meta name="author" content="Exorcist Fandub">
+    <meta property="og:title" content="Exorcist Fandub">
+    <meta property="og:description" content="Tu página favorita de animes, doramas y películas dobladas al español">
+    <meta property="og:image" content="URL_DE_TU_IMAGEN_DE_PORTADA">
+    <meta property="og:url" content="https://tupagina.github.io">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Exorcist Fandub">
+    <meta name="twitter:description" content="Disfruta de animes, doramas y más en español.">
 </head>
 <body>
     <header>
         <img src="assets/images/logo.png" alt="Logo" class="logo">
         <h1 class="titulo">Exorcist Fandub</h1>
-        <button id="toggle-darkmode" class="filtro-btn">Modo Oscuro</button>
     </header>
-
+    
     <section class="banner">
         <img src="assets/images/banner.jpg" alt="Banner principal">
     </section>
-
+    
     <main>
         <h2 class="seccion-titulo">Últimos Estrenos</h2>
-        
-        <input type="text" id="search-input" placeholder="Buscar...">
-
-        <div class="contenedor-categorias" id="content-list">
-            <!-- El contenido se cargará aquí dinámicamente -->
+        <div class="contenedor-categorias">
+            <div class="tarjeta">
+                <img src="assets/images/ejemplo.jpg" alt="Serie Ejemplo">
+                <p>Serie Ejemplo</p>
+            </div>
+            <div class="tarjeta">
+                <img src="assets/images/ejemplo2.jpg" alt="Dorama Ejemplo">
+                <p>Dorama Ejemplo</p>
+            </div>
         </div>
+
+        <h2 class="seccion-titulo">Comentarios</h2>
+        <form id="form-comentar">
+            <textarea id="comentario" placeholder="Deja tu comentario..." required></textarea>
+            <button type="submit">Comentar</button>
+        </form>
+        <div id="comentarios-lista"></div>
     </main>
 
-    <script src="js/script.js"></script>
+    <footer>
+        <div class="redes-sociales">
+            <a href="https://www.facebook.com/exorcistfandub" target="_blank">Facebook</a>
+            <a href="https://twitter.com/exorcistfandub" target="_blank">Twitter</a>
+            <a href="https://www.instagram.com/exorcistfandub" target="_blank">Instagram</a>
+        </div>
+    </footer>
+
+    <script src="js/comentarios.js"></script>
 </body>
 </html>
