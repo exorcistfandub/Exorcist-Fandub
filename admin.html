@@ -18,7 +18,7 @@
     <section class="portadas">
         <h2 class="seccion-titulo">Portadas de Proyectos</h2>
         <div class="portadas-container">
-            <!-- Las portadas se agregarán aquí -->
+            <!-- Las portadas se agregarán aquí dinámicamente -->
         </div>
     </section>
 
@@ -32,6 +32,7 @@
             <select id="tipo" name="tipo" required>
                 <option value="serie">Serie</option>
                 <option value="dorama">Dorama</option>
+                <option value="pelicula">Película</option>
             </select>
 
             <label for="estado">Estado</label>
@@ -42,6 +43,12 @@
 
             <label for="imagen">Imagen</label>
             <input type="url" id="imagen" name="imagen" required>
+
+            <label for="categorias">Categorías</label>
+            <input type="text" id="categorias" name="categorias" placeholder="Comedia, Acción, etc." required>
+
+            <label for="capitulos">Capítulos (si aplica)</label>
+            <input type="text" id="capitulos" name="capitulos" placeholder="Ej: 1, 2, 3..." required>
 
             <button type="submit">Agregar</button>
         </form>
