@@ -1,70 +1,63 @@
 document.addEventListener("DOMContentLoaded", function () {
     cargarCarrusel();
     cargarContenido();
-    cargarSeries();
-    cargarPeliculas();
 });
 
+// Cargar el carrusel
 function cargarCarrusel() {
     const carrusel = document.getElementById("carrusel");
     carrusel.innerHTML = `
-        <div class="slide"><img src="assets/images/ejemplo.jpg" alt="Estreno 1" loading="lazy"></div>
-        <div class="slide"><img src="assets/images/ejemplo2.jpg" alt="Estreno 2" loading="lazy"></div>
+        <div class="slide"><img src="assets/images/ejemplo.jpg" alt="Estreno 1"></div>
+        <div class="slide"><img src="assets/images/ejemplo2.jpg" alt="Estreno 2"></div>
     `;
 }
 
+// Cargar contenido desde contenido.json
 function cargarContenido() {
-    const contenedor = document.getElementById("contenedorContenido");
-    const contenido = [
-        { titulo: "Contenido Ejemplo", imagen: "assets/images/ejemplo.jpg", estado: "emision" },
-        { titulo: "Contenido Ejemplo 2", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado" }
-    ];
-    
-    contenedor.innerHTML = contenido.map(item => `
-        <div class="tarjeta" data-estado="${item.estado}">
-            <img src="${item.imagen}" alt="${item.titulo}" loading="lazy">
-            <p>${item.titulo}</p>
-        </div>
-    `).join('');
+    fetch('contenido.json')
+        .then(response => response.json())
+        .then(data => {
+            const contenedorSeries = document.getElementById("contenedorSeries");
+            const contenedorPeliculas = document.getElementById("contenedorPeliculas");
+            const contenedorContenido = document.getElementById("contenedorContenido");
+
+            // Filtrar y cargar las series
+            const series = data.filter(item => item.tipo === "serie");
+            contenedorSeries.innerHTML = series.map(item => `
+                <div class="tarjeta" data-estado="${item.estado}">
+                    <img src="${item.imagen}" alt="${item.titulo}">
+                    <p>${item.titulo}</p>
+                </div>
+            `).join('');
+
+            // Filtrar y cargar las películas
+            const peliculas = data.filter(item => item.tipo === "pelicula");
+            contenedorPeliculas.innerHTML = peliculas.map(item => `
+                <div class="tarjeta" data-estado="${item.estado}">
+                    <img src="${item.imagen}" alt="${item.titulo}">
+                    <p>${item.titulo}</p>
+                </div>
+            `).join('');
+
+            // Cargar todo el contenido
+            contenedorContenido.innerHTML = data.map(item => `
+                <div class="tarjeta" data-estado="${item.estado}">
+                    <img src="${item.imagen}" alt="${item.titulo}">
+                    <p>${item.titulo}</p>
+                </div>
+            `).join('');
+        })
+        .catch(error => console.error("Error al cargar el contenido:", error));
 }
 
-function cargarSeries() {
-    const contenedor = document.getElementById("contenedorSeries");
-    const series = [
-        { titulo: "Serie Ejemplo", imagen: "assets/images/ejemplo.jpg", estado: "emision" },
-        { titulo: "Serie Ejemplo 2", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado" }
-    ];
-    
-    contenedor.innerHTML = series.map(item => `
-        <div class="tarjeta" data-estado="${item.estado}">
-            <img src="${item.imagen}" alt="${item.titulo}" loading="lazy">
-            <p>${item.titulo}</p>
-        </div>
-    `).join('');
-}
-
-function cargarPeliculas() {
-    const contenedor = document.getElementById("contenedorPeliculas");
-    const peliculas = [
-        { titulo: "Película Ejemplo", imagen: "assets/images/ejemplo.jpg", estado: "emision" },
-        { titulo: "Película Ejemplo 2", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado" }
-    ];
-    
-    contenedor.innerHTML = peliculas.map(item => `
-        <div class="tarjeta" data-estado="${item.estado}">
-            <img src="${item.imagen}" alt="${item.titulo}" loading="lazy">
-            <p>${item.titulo}</p>
-        </div>
-    `).join('');
-}
-
+// Filtrar por estado
 function filtrarEstado(estado) {
     const tarjetas = document.querySelectorAll(".tarjeta");
     tarjetas.forEach(tarjeta => {
-        if (estado === 'todos' || tarjeta.getAttribute('data-estado') === estado) {
-            tarjeta.style.display = 'block';
+        if (estado === "todos" || tarjeta.getAttribute("data-estado") === estado) {
+            tarjeta.style.display = "block";
         } else {
-            tarjeta.style.display = 'none';
+            tarjeta.style.display = "none";
         }
     });
 }
