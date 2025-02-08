@@ -3,38 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración - Exorcist Fandub</title>
+    <title>Admin - Exorcist Fandub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
-        <h1>Panel de Administración - Exorcist Fandub</h1>
+        <div class="logo">
+            <h1>Exorcist Fandub - Admin</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ver Sitio</a></li>
+                <li><a href="#">Agregar Contenido</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section>
-        <h2>Agregar nuevo contenido</h2>
-        <form id="form-agregar-contenido">
-            <label for="titulo">Título</label>
-            <input type="text" id="titulo" name="titulo" required>
-
-            <label for="tipo">Tipo de contenido</label>
-            <select id="tipo" name="tipo" required>
-                <option value="serie">Serie</option>
-                <option value="dorama">Dorama</option>
-            </select>
-
-            <label for="estado">Estado</label>
-            <select id="estado" name="estado" required>
-                <option value="emision">En emisión</option>
-                <option value="finalizado">Finalizado</option>
-            </select>
-
-            <label for="imagen">Imagen</label>
-            <input type="file" id="imagen" name="imagen" accept="image/*" required>
-
-            <button type="submit">Agregar</button>
+    <section id="add-content">
+        <h2>Agregar Nuevo Contenido</h2>
+        <form id="form-agregar-contenido" action="admin_process.php" method="POST" enctype="multipart/form-data">
+            <div>
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" required>
+            </div>
+            <div>
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria" required>
+                    <option value="anime">Anime</option>
+                    <option value="dorama">Dorama</option>
+                    <option value="pelicula">Película</option>
+                </select>
+            </div>
+            <div>
+                <label for="imagen">Imagen de la Portada:</label>
+                <input type="file" id="imagen" name="imagen" accept="image/*" required>
+            </div>
+            <div>
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" required></textarea>
+            </div>
+            <div>
+                <label for="estado">Estado:</label>
+                <select id="estado" name="estado" required>
+                    <option value="emision">Emisión</option>
+                    <option value="finalizado">Finalizado</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit">Agregar Contenido</button>
+            </div>
         </form>
     </section>
+
+    <footer>
+        <p>&copy; 2025 Exorcist Fandub. Todos los derechos reservados.</p>
+    </footer>
 
     <script src="js/script.js"></script>
 </body>
