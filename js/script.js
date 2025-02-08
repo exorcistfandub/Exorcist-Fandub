@@ -1,56 +1,36 @@
 document.addEventListener("DOMContentLoaded", function () {
     cargarCarrusel();
     cargarContenido();
-    cargarSeries();
-    cargarPeliculas();
+    cambiarModo();
 });
+
+let carruselIndex = 0;
 
 function cargarCarrusel() {
     const carrusel = document.getElementById("carrusel");
-    carrusel.innerHTML = `
-        <div class="slide"><img src="assets/images/ejemplo.jpg" alt="Estreno 1"></div>
-        <div class="slide"><img src="assets/images/ejemplo2.jpg" alt="Estreno 2"></div>
-    `;
+    const imagenes = ["assets/images/ejemplo.jpg", "assets/images/ejemplo2.jpg"];
+    let contenidoCarrusel = "";
+    imagenes.forEach(img => {
+        contenidoCarrusel += `<div class="carrusel-item"><img src="${img}" alt="Estreno"></div>`;
+    });
+    carrusel.innerHTML = contenidoCarrusel;
+}
+
+function cambiarCarrusel(direccion) {
+    const carruselItems = document.querySelectorAll(".carrusel-item");
+    carruselItems[carruselIndex].style.display = "none";
+    carruselIndex = (carruselIndex + direccion + carruselItems.length) % carruselItems.length;
+    carruselItems[carruselIndex].style.display = "inline-block";
 }
 
 function cargarContenido() {
-    const contenedor = document.getElementById("contenedorContenido");
     const contenido = [
-        { titulo: "Contenido Ejemplo 1", imagen: "assets/images/ejemplo.jpg", estado: "emision" },
-        { titulo: "Contenido Ejemplo 2", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado" }
+        { titulo: "Serie Ejemplo", imagen: "assets/images/ejemplo.jpg", estado: "emision" },
+        { titulo: "Dorama Ejemplo", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado" }
     ];
-    
+
+    const contenedor = document.getElementById("contenedorContenido");
     contenedor.innerHTML = contenido.map(item => `
-        <div class="tarjeta" data-estado="${item.estado}">
-            <img src="${item.imagen}" alt="${item.titulo}">
-            <p>${item.titulo}</p>
-        </div>
-    `).join('');
-}
-
-function cargarSeries() {
-    const contenedor = document.getElementById("contenedorSeries");
-    const series = [
-        { titulo: "Serie Ejemplo 1", imagen: "assets/images/ejemplo.jpg", estado: "emision" },
-        { titulo: "Serie Ejemplo 2", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado" }
-    ];
-    
-    contenedor.innerHTML = series.map(item => `
-        <div class="tarjeta" data-estado="${item.estado}">
-            <img src="${item.imagen}" alt="${item.titulo}">
-            <p>${item.titulo}</p>
-        </div>
-    `).join('');
-}
-
-function cargarPeliculas() {
-    const contenedor = document.getElementById("contenedorPeliculas");
-    const peliculas = [
-        { titulo: "Película Ejemplo 1", imagen: "assets/images/ejemplo.jpg", estado: "emision" },
-        { titulo: "Película Ejemplo 2", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado" }
-    ];
-    
-    contenedor.innerHTML = peliculas.map(item => `
         <div class="tarjeta" data-estado="${item.estado}">
             <img src="${item.imagen}" alt="${item.titulo}">
             <p>${item.titulo}</p>
@@ -65,6 +45,31 @@ function filtrarEstado(estado) {
             tarjeta.style.display = "block";
         } else {
             tarjeta.style.display = "none";
+        }
+    });
+}
+
+function buscarContenido() {
+    const query = document.getElementById("buscar").value.toLowerCase();
+    const tarjetas = document.querySelectorAll(".tarjeta");
+    tarjetas.forEach(tarjeta => {
+        const titulo = tarjeta.querySelector("p").textContent.toLowerCase();
+        if (titulo.includes(query)) {
+            tarjeta.style.display = "block";
+        } else {
+            tarjeta.style.display = "none";
+        }
+    });
+}
+
+function cambiarModo() {
+    const botonModo = document.getElementById("modo-oscuro");
+    botonModo.addEventListener("click", () => {
+        document.body.classList.toggle("modo-oscuro");
+        if (document.body.classList.contains("modo-oscuro")) {
+            botonModo.textContent = "Modo Claro";
+        } else {
+            botonModo.textContent = "Modo Oscuro";
         }
     });
 }
