@@ -1,82 +1,83 @@
-/* Estilos generales */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #0a0a0a;
-    color: white;
+/* Resetear márgenes y padding en todo el documento */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Header */
-header {
-    text-align: center;
-    margin: 20px;
+/* Asegurarse de que el body y html tomen toda la altura */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  overflow-x: hidden; /* Para evitar desplazamiento horizontal */
 }
 
-#logo img {
-    width: 150px;
-    height: auto;
-}
-
-/* Banner */
+/* Hacer que el banner tenga un tamaño adecuado */
 #banner {
-    text-align: center;
-    margin: 20px 0;
+  width: 100%;
+  height: 300px; /* Ajusta el tamaño según lo necesites */
+  background-image: url('assets/images/banner.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-#banner img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+/* Asegurarse de que el contenido de la página se expanda adecuadamente */
+.container {
+  min-height: 100vh; /* Asegura que el contenido ocupe toda la pantalla */
+  padding: 20px;
 }
 
-/* Categorías */
-#categories {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
+/* Diseño de secciones para que se vea más organizado */
+section {
+  padding: 20px 0;
 }
 
-.category-card {
-    text-align: center;
-    background-color: #003366;
-    padding: 20px;
-    border-radius: 10px;
-    width: 30%;
-    transition: transform 0.3s ease;
-}
-
-.category-card:hover {
-    transform: scale(1.05);
-}
-
-.category-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-.category-card h3 {
-    color: white;
-}
-
-.category-card a {
-    color: #f4a261;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.category-card a:hover {
-    text-decoration: underline;
-}
-
-/* Footer */
 footer {
-    background-color: #003366;
-    padding: 10px;
-    text-align: center;
-    color: white;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+  text-align: center;
+  padding: 10px;
+  background-color: #111;
+  color: white;
+}
+
+.carousel {
+  margin: 20px 0;
+}
+
+/* Diseño del pie de página */
+footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Estilos del logo */
+#logo {
+  width: 150px; /* Ajusta el tamaño del logo según lo necesites */
+  height: auto;
+}
+
+/* Estilos del menú de navegación */
+nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 10px 0;
+  background-color: #1f1f1f;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #00bcd4;
 }
