@@ -3,111 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Exorcist Fandub es un sitio de animes, doramas y películas en fandub.">
+    <meta name="keywords" content="fandub, anime, dorama, series, películas">
+    <meta name="author" content="Exorcist Fandub">
     <title>Exorcist Fandub</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background: linear-gradient(to bottom, #000428, #004e92);
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            text-align: center;
-            padding: 20px;
-        }
-        .logo {
-            width: 150px;
-        }
-        .titulo {
-            font-family: 'Uncial Antiqua', cursive;
-            font-size: 2rem;
-        }
-        .banner img {
-            width: 100%;
-            height: auto;
-        }
-        .seccion-titulo {
-            text-align: center;
-            font-size: 1.8rem;
-            margin-top: 20px;
-        }
-        .contenedor-categorias {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-        .tarjeta {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s;
-            position: relative;
-        }
-        .tarjeta:hover {
-            transform: scale(1.1);
-        }
-        .tarjeta img {
-            width: 150px;
-            height: auto;
-            border-radius: 5px;
-        }
-        .etiqueta {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 5px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-        }
-        .filtro-btn {
-            padding: 10px 20px;
-            margin: 10px;
-            cursor: pointer;
-            background-color: #004e92;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-    </style>
 </head>
 <body>
     <header>
         <img src="assets/images/logo.png" alt="Logo" class="logo">
         <h1 class="titulo">Exorcist Fandub</h1>
+        <button id="toggle-darkmode" class="filtro-btn">Modo Oscuro</button>
     </header>
-    
+
     <section class="banner">
         <img src="assets/images/banner.jpg" alt="Banner principal">
     </section>
-    
+
     <main>
         <h2 class="seccion-titulo">Últimos Estrenos</h2>
-        <!-- Filtro de estado -->
-        <div style="text-align: center;">
-            <button class="filtro-btn" onclick="filterContent('all')">Mostrar Todo</button>
-            <button class="filtro-btn" onclick="filterContent('Emisión')">Emisión</button>
-            <button class="filtro-btn" onclick="filterContent('Finalizado')">Finalizado</button>
-        </div>
         
+        <input type="text" id="search-input" placeholder="Buscar...">
+
         <div class="contenedor-categorias">
-            <!-- Ejemplo de tarjeta con filtro por tipo y estado -->
-            <div class="tarjeta" data-type="Serie" data-status="Emisión">
+            <div class="tarjeta" data-status="Emisión">
                 <img src="assets/images/ejemplo.jpg" alt="Serie Ejemplo">
                 <p>Serie Ejemplo</p>
-                <span class="etiqueta">Serie</span>
+                <button class="fav-btn">❤️</button>
             </div>
-            <div class="tarjeta" data-type="Dorama" data-status="Finalizado">
+            <div class="tarjeta" data-status="Finalizado">
                 <img src="assets/images/ejemplo2.jpg" alt="Dorama Ejemplo">
                 <p>Dorama Ejemplo</p>
-                <span class="etiqueta">Dorama</span>
+                <button class="fav-btn">❤️</button>
             </div>
         </div>
     </main>
