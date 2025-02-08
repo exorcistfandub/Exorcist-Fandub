@@ -5,32 +5,26 @@ body {
     margin: 0;
     padding: 0;
 }
-
 header {
     text-align: center;
     padding: 20px;
 }
-
 .logo {
     width: 150px;
 }
-
 .titulo {
     font-family: 'Uncial Antiqua', cursive;
     font-size: 2rem;
 }
-
 .banner img {
     width: 100%;
     height: auto;
 }
-
 .seccion-titulo {
     text-align: center;
     font-size: 1.8rem;
     margin-top: 20px;
 }
-
 .contenedor-categorias {
     display: flex;
     flex-wrap: wrap;
@@ -38,7 +32,6 @@ header {
     gap: 20px;
     padding: 20px;
 }
-
 .tarjeta {
     background: rgba(255, 255, 255, 0.1);
     padding: 15px;
@@ -47,22 +40,18 @@ header {
     transition: transform 0.3s;
     width: 180px;
 }
-
 .tarjeta:hover {
     transform: scale(1.1);
 }
-
 .tarjeta img {
     width: 100%;
     height: auto;
     border-radius: 5px;
 }
-
 .filtros {
     text-align: center;
     margin: 20px 0;
 }
-
 .filtros button {
     background: #004e92;
     color: white;
@@ -72,20 +61,6 @@ header {
     cursor: pointer;
     border-radius: 5px;
 }
-
 .filtros button:hover {
     background: #0066cc;
-}
-
-/* Agregado para la nueva estructura */
-#contenedorContenido {
-    margin-top: 20px;
-}
-
-#contenedorPeliculas {
-    margin-top: 20px;
-}
-
-#contenedorSeries {
-    margin-top: 20px;
 }

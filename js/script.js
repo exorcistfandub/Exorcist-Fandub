@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     cargarCarrusel();
     cargarContenido();
-    cargarPeliculas();
-    cargarSeries();
 });
 
 function cargarCarrusel() {
@@ -14,48 +12,28 @@ function cargarCarrusel() {
 }
 
 function cargarContenido() {
-    const contenedor = document.getElementById("contenedorContenido");
+    const contenedorSeries = document.getElementById("contenedorSeries");
+    const contenedorPeliculas = document.getElementById("contenedorPeliculas");
+
     const contenido = [
-        { titulo: "Contenido Ejemplo 1", imagen: "assets/images/ejemplo.jpg", estado: "emision" },
-        { titulo: "Contenido Ejemplo 2", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado" }
-    ];
-    
-    contenedor.innerHTML = contenido.map(item => `
-        <div class="tarjeta" data-estado="${item.estado}">
-            <img src="${item.imagen}" alt="${item.titulo}">
-            <p>${item.titulo}</p>
-        </div>
-    `).join('');
-}
-
-function cargarPeliculas() {
-    const contenedor = document.getElementById("contenedorPeliculas");
-    const peliculas = [
-        { titulo: "Película Ejemplo 1", imagen: "assets/images/ejemplo.jpg", estado: "finalizado" },
-        { titulo: "Película Ejemplo 2", imagen: "assets/images/ejemplo2.jpg", estado: "emision" }
+        { titulo: "Serie Ejemplo", imagen: "assets/images/ejemplo.jpg", estado: "emision", tipo: "serie" },
+        { titulo: "Dorama Ejemplo", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado", tipo: "serie" },
+        { titulo: "Película Ejemplo", imagen: "assets/images/ejemplo3.jpg", estado: "finalizado", tipo: "pelicula" }
     ];
 
-    contenedor.innerHTML = peliculas.map(item => `
-        <div class="tarjeta" data-estado="${item.estado}">
-            <img src="${item.imagen}" alt="${item.titulo}">
-            <p>${item.titulo}</p>
-        </div>
-    `).join('');
-}
-
-function cargarSeries() {
-    const contenedor = document.getElementById("contenedorSeries");
-    const series = [
-        { titulo: "Serie Ejemplo 1", imagen: "assets/images/ejemplo.jpg", estado: "emision" },
-        { titulo: "Serie Ejemplo 2", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado" }
-    ];
-    
-    contenedor.innerHTML = series.map(item => `
-        <div class="tarjeta" data-estado="${item.estado}">
-            <img src="${item.imagen}" alt="${item.titulo}">
-            <p>${item.titulo}</p>
-        </div>
-    `).join('');
+    contenido.forEach(item => {
+        const tarjeta = `
+            <div class="tarjeta" data-estado="${item.estado}">
+                <img src="${item.imagen}" alt="${item.titulo}">
+                <p>${item.titulo}</p>
+            </div>
+        `;
+        if (item.tipo === "serie") {
+            contenedorSeries.innerHTML += tarjeta;
+        } else if (item.tipo === "pelicula") {
+            contenedorPeliculas.innerHTML += tarjeta;
+        }
+    });
 }
 
 function filtrarEstado(estado) {
