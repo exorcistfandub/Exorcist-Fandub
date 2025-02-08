@@ -1,82 +1,66 @@
+/* Estilos generales */
 body {
-    font-family: 'Uncial Antiqua', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    background: linear-gradient(to bottom, #000428, #004e92);
+    color: white;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #333;
-    color: white;
     text-align: center;
-    padding: 10px;
+    padding: 20px;
 }
 
-h1 {
-    font-size: 2em;
+.logo {
+    width: 150px;
 }
 
-.portadas-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
+.titulo {
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 2rem;
 }
 
-.portada-item {
-    width: 250px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.portada-img {
+/* Banner */
+.banner img {
     width: 100%;
     height: auto;
 }
 
-.info-portada {
-    padding: 10px;
+/* Contenido */
+.seccion-titulo {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-top: 20px;
 }
 
-.estado-portada {
+.contenedor-categorias {
     display: flex;
-    align-items: center;
-    gap: 5px;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
 }
 
-.bolita-verde {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: green;
-}
-
-.bolita-roja {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: red;
-}
-
-button {
-    padding: 5px 10px;
-    background-color: #333;
-    color: white;
-    border: none;
+.tarjeta {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
     cursor: pointer;
+}
+
+.tarjeta:hover {
+    transform: scale(1.1);
+}
+
+.tarjeta img {
+    width: 150px;
+    height: auto;
     border-radius: 5px;
 }
 
-button:hover {
-    background-color: #555;
-}
-
-.imagen-detalle {
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 10px;
-}
+/* Pie de página */
+footer {
+    text-align: center;
+   
