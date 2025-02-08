@@ -6,45 +6,60 @@
     <title>Exorcist Fandub</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animations -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 <body>
     <header>
-        <img src="assets/images/logo.png" alt="Logo" class="logo">
+        <img src="assets/images/logo.png" alt="Logo" class="logo" loading="lazy">
         <h1 class="titulo">Exorcist Fandub</h1>
     </header>
     
     <section class="banner">
-        <img src="assets/images/banner.jpg" alt="Banner principal">
+        <img src="assets/images/banner.jpg" alt="Banner principal" loading="lazy">
     </section>
     
     <main>
         <h2 class="seccion-titulo">Últimos Estrenos</h2>
-        <div class="carrusel" id="carrusel">
-            <!-- Carrusel dinámico para los últimos estrenos -->
+        <div class="carrusel" id="carrusel" data-aos="fade-up">
+            <!-- Carrusel dinámico -->
         </div>
 
-        <h2 class="seccion-titulo">Contenido General</h2>
-        <div class="contenedor-categorias" id="contenedorContenido">
-            <!-- Contenido general (todas las series, películas y doramas) -->
+        <h2 class="seccion-titulo">Contenido</h2>
+        <div class="contenedor-categorias" id="contenedorContenido" data-aos="fade-up">
+            <!-- Contenido dinámico -->
         </div>
-
+        
         <h2 class="seccion-titulo">Series</h2>
-        <div class="contenedor-categorias" id="contenedorSeries">
-            <!-- Solo series -->
+        <div class="contenedor-categorias" id="contenedorSeries" data-aos="fade-up">
+            <!-- Series dinámicas -->
         </div>
 
         <h2 class="seccion-titulo">Películas</h2>
-        <div class="contenedor-categorias" id="contenedorPeliculas">
-            <!-- Solo películas -->
+        <div class="contenedor-categorias" id="contenedorPeliculas" data-aos="fade-up">
+            <!-- Películas dinámicas -->
         </div>
-        
+
         <div class="filtros">
             <button onclick="filtrarEstado('todos')">Todos</button>
             <button onclick="filtrarEstado('emision')">En emisión</button>
             <button onclick="filtrarEstado('finalizado')">Finalizado</button>
         </div>
     </main>
-    
+
+    <button id="toggle-dark-mode">Modo Oscuro</button>
+
     <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        
+        // Modo Oscuro
+        const toggleButton = document.getElementById("toggle-dark-mode");
+        toggleButton.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+        });
+    </script>
 </body>
 </html>
