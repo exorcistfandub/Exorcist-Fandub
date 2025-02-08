@@ -5,26 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración - Exorcist Fandub</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <img src="assets/images/logo.png" alt="Logo" class="logo">
-        </div>
-        <h1 class="titulo">Exorcist Fandub</h1>
+        <h1>Panel de Administración - Exorcist Fandub</h1>
     </header>
 
-    <section class="portadas">
-        <h2 class="seccion-titulo">Portadas de Proyectos</h2>
-        <div class="portadas-container">
-            <!-- Las portadas se agregarán aquí dinámicamente -->
-        </div>
-    </section>
-
-    <main>
-        <h2 class="seccion-titulo">Agregar Nuevo Contenido</h2>
-        <form id="form-agregar-contenido" class="form-agregar-contenido">
+    <section>
+        <h2>Agregar nuevo contenido</h2>
+        <form id="form-agregar-contenido">
             <label for="titulo">Título</label>
             <input type="text" id="titulo" name="titulo" required>
 
@@ -32,7 +21,6 @@
             <select id="tipo" name="tipo" required>
                 <option value="serie">Serie</option>
                 <option value="dorama">Dorama</option>
-                <option value="pelicula">Película</option>
             </select>
 
             <label for="estado">Estado</label>
@@ -42,17 +30,11 @@
             </select>
 
             <label for="imagen">Imagen</label>
-            <input type="url" id="imagen" name="imagen" required>
-
-            <label for="categorias">Categorías</label>
-            <input type="text" id="categorias" name="categorias" placeholder="Comedia, Acción, etc." required>
-
-            <label for="capitulos">Capítulos (si aplica)</label>
-            <input type="text" id="capitulos" name="capitulos" placeholder="Ej: 1, 2, 3..." required>
+            <input type="file" id="imagen" name="imagen" accept="image/*" required>
 
             <button type="submit">Agregar</button>
         </form>
-    </main>
+    </section>
 
     <script src="js/script.js"></script>
 </body>

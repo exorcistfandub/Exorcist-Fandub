@@ -4,80 +4,52 @@ document.getElementById("form-agregar-contenido").addEventListener("submit", fun
     const titulo = document.getElementById("titulo").value;
     const tipo = document.getElementById("tipo").value;
     const estado = document.getElementById("estado").value;
-    const imagen = document.getElementById("imagen").value;
-    const categorias = document.getElementById("categorias").value.split(',').map(cat => cat.trim());
-    const capitulos = document.getElementById("capitulos").value.split(',').map(cap => cap.trim());
+    const imagen = document.getElementById("imagen").files[0]; // Obtener el archivo seleccionado
 
-    const nuevoContenido = {
-        titulo,
-        tipo,
-        estado,
-        imagen,
-        categorias,
-        capitulos
-    };
+    if (imagen) {
+        // Usamos un FileReader para cargar la imagen y obtener su URL
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const imageUrl = e.target.result;
+            console.log("Imagen cargada correctamente:", imageUrl);
 
-    // Guardamos el nuevo contenido en localStorage
-    let contenidos = JSON.parse(localStorage.getItem("contenidos")) || [];
-    contenidos.push(nuevoContenido);
-    localStorage.setItem("contenidos", JSON.stringify(contenidos));
+            // Crear el objeto con los datos del contenido
+            const nuevoContenido = {
+                titulo,
+                tipo,
+                estado,
+                imagen: imageUrl // Aquí se guarda la URL de la imagen cargada
+            };
 
-    mostrarPortadas();  // Actualizamos la visualización de las portadas
+            // Guardar o mostrar el contenido, por ejemplo, en la galería
+            mostrarContenidoEnGaleria(nuevoContenido);
 
-    // Limpiar el formulario
-    document.getElementById("form-agregar-contenido").reset();
+            // Limpiar el formulario
+            document.getElementById("form-agregar-contenido").reset();
+        };
+        reader.readAsDataURL(imagen); // Lee la imagen como URL
+    } else {
+        console.log("No se ha seleccionado ninguna imagen.");
+    }
 });
 
-// Función para mostrar las portadas y manejar clics
-function mostrarPortadas() {
-    let contenidos = JSON.parse(localStorage.getItem("contenidos")) || [];
-    const contenedorPortadas = document.querySelector(".portadas-container");
-    contenedorPortadas.innerHTML = ""; // Limpiar las portadas previas
+// Función para mostrar el nuevo contenido en la galería
+function mostrarContenidoEnGaleria(contenido) {
+    const galeria = document.getElementById("galeria");
 
-    contenidos.forEach(contenido => {
-        const div = document.createElement("div");
-        div.classList.add("portada-item");
-        div.innerHTML = `
-            <img src="${contenido.imagen}" alt="${contenido.titulo}" class="portada-img">
-            <div class="info-portada">
-                <h3>${contenido.titulo}</h3>
-                <p>${contenido.tipo}</p>
-                <div class="estado-portada">
-                    <span class="${contenido.estado === 'emision' ? 'bolita-verde' : 'bolita-roja'}"></span>
-                    ${contenido.estado === 'emision' ? 'En emisión' : 'Finalizado'}
-                </div>
-                <button onclick="verContenido('${contenido.titulo}')">Ver Detalles</button>
-            </div>
-        `;
-        contenedorPortadas.appendChild(div);
-    });
+    const divContenido = document.createElement("div");
+    divContenido.classList.add("contenido-item");
+
+    const img = document.createElement("img");
+    img.src = contenido.imagen; // La URL de la imagen cargada
+    img.alt = contenido.titulo;
+
+    const estado = document.createElement("div");
+    estado.classList.add("estado");
+    estado.textContent = contenido.estado === "emision" ? "En emisión" : "Finalizado";
+    estado.style.backgroundColor = contenido.estado === "emision" ? "green" : "red";
+
+    divContenido.appendChild(img);
+    divContenido.appendChild(estado);
+    galeria.appendChild(divContenido);
 }
-
-// Función para ver detalles del contenido (desplegar capítulos si es serie/dorama)
-function verContenido(titulo) {
-    let contenidos = JSON.parse(localStorage.getItem("contenidos")) || [];
-    let contenido = contenidos.find(c => c.titulo === titulo);
-    
-    if (contenido) {
-        let detalles = `
-            <h2>${contenido.titulo}</h2>
-            <img src="${contenido.imagen}" alt="${contenido.titulo}" class="imagen-detalle">
-            <p><strong>Tipo:</strong> ${contenido.tipo}</p>
-            <p><strong>Estado:</strong> ${contenido.estado === 'emision' ? 'En emisión' : 'Finalizado'}</p>
-            <p><strong>Categorías:</strong> ${contenido.categorias.join(', ')}</p>
-        `;
-        
-        if (contenido.capitulos.length > 0) {
-            detalles += `<h3>Capítulos:</h3><ul>`;
-            contenido.capitulos.forEach(cap => {
-                detalles += `<li><a href="#">Capítulo ${cap}</a></li>`;
-            });
-            detalles += `</ul>`;
-        }
-        
-        document.querySelector(".portadas-container").innerHTML = detalles;
-    }
-}
-
-// Llamada para mostrar las portadas al cargar la página
-mostrarPortadas();

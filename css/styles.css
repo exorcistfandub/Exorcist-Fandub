@@ -1,66 +1,50 @@
 /* Estilos generales */
 body {
-    background: linear-gradient(to bottom, #000428, #004e92);
-    color: white;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f4f4f4;
 }
 
 header {
+    background-color: #333;
+    color: white;
     text-align: center;
     padding: 20px;
 }
 
-.logo {
-    width: 150px;
+section {
+    padding: 20px;
 }
 
-.titulo {
-    font-family: 'Uncial Antiqua', cursive;
-    font-size: 2rem;
-}
-
-/* Banner */
-.banner img {
-    width: 100%;
-    height: auto;
-}
-
-/* Contenido */
-.seccion-titulo {
-    text-align: center;
-    font-size: 1.8rem;
-    margin-top: 20px;
-}
-
-.contenedor-categorias {
+/* Galería */
+.galeria {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
     gap: 20px;
-    padding: 20px;
+    justify-content: center;
 }
 
-.tarjeta {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 10px;
+.contenido-item {
+    width: 200px;
+    margin: 10px;
     text-align: center;
-    transition: transform 0.3s;
-    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
 }
 
-.tarjeta:hover {
-    transform: scale(1.1);
-}
-
-.tarjeta img {
-    width: 150px;
+.contenido-item img {
+    width: 100%;
     height: auto;
     border-radius: 5px;
 }
 
-/* Pie de página */
-footer {
-    text-align: center;
-   
+.estado {
+    margin-top: 10px;
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
