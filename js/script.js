@@ -13,7 +13,12 @@ document.getElementById("form-agregar-contenido").addEventListener("submit", fun
         imagen
     };
 
-    console.log("Contenido agregado:", nuevoContenido);
+    // Mostrar la portada en la sección de portadas
+    const portadasContainer = document.querySelector(".portadas-container");
+    const nuevaPortada = document.createElement("img");
+    nuevaPortada.src = imagen;
+    nuevaPortada.alt = titulo;
+    portadasContainer.appendChild(nuevaPortada);
 
     // Limpiar el formulario
     document.getElementById("form-agregar-contenido").reset();

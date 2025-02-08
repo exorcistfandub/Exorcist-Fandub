@@ -26,10 +26,32 @@ header {
     font-family: 'Uncial Antiqua', cursive;
 }
 
-/* Banner */
-.banner img {
-    width: 100%;
+/* Sección de portadas */
+.portadas {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.portadas-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.portadas-container img {
+    width: 200px;
     height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.seccion-titulo {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 20px;
+    color: white;
 }
 
 /* Formulario de agregar contenido */
@@ -68,12 +90,4 @@ header {
 
 .form-agregar-contenido button:hover {
     background-color: #00316e;
-}
-
-/* Sección de los títulos */
-.seccion-titulo {
-    text-align: center;
-    font-size: 2rem;
-    margin-top: 20px;
-    color: #f1c40f;
 }
