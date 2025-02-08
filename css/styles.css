@@ -1,50 +1,154 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    background-color: #1f1f1f;
+    color: white;
 }
 
+/* Cabecera */
 header {
     background-color: #333;
-    color: white;
+    padding: 20px;
     text-align: center;
-    padding: 20px;
 }
 
-section {
-    padding: 20px;
+h1 {
+    font-size: 2.5rem;
 }
 
-/* Galería */
-.galeria {
+/* Carrusel */
+#carrusel {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.carrusel-imagen {
+    position: relative;
+    width: 45%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.carrusel-imagen img {
+    width: 100%;
+    height: auto;
+}
+
+.texto-carrusel {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+}
+
+/* Categorías */
+#categorias {
+    text-align: center;
+    margin-top: 40px;
+}
+
+#categorias ul {
+    list-style: none;
+    display: flex;
     justify-content: center;
+    gap: 20px;
+}
+
+#categorias a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+#categorias a:hover {
+    background-color: #333;
+}
+
+/* Contenido */
+#contenido {
+    margin-top: 40px;
 }
 
 .contenido-item {
-    width: 200px;
-    margin: 10px;
-    text-align: center;
-    border: 1px solid #ddd;
+    display: inline-block;
+    width: 45%;
+    margin: 10px 2.5%;
+    background-color: #333;
     border-radius: 10px;
     padding: 10px;
-    background-color: white;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.contenido-item:hover {
+    transform: scale(1.05);
 }
 
 .contenido-item img {
     width: 100%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
-.estado {
+.contenido-item h3 {
     margin-top: 10px;
-    padding: 5px;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
+    font-size: 1.5rem;
+}
+
+.contenido-item .estado {
+    margin-top: 10px;
+}
+
+.bolita-emision {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.bolita-finalizado {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #carrusel {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .carrusel-imagen {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    #categorias ul {
+        flex-direction: column;
+    }
+
+    .contenido-item {
+        width: 90%;
+        margin-bottom: 20px;
+    }
 }
