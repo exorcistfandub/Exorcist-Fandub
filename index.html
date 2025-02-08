@@ -3,67 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Exorcist Fandub</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" href="assets/images/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Barra de navegación -->
-    <nav>
-        <div class="logo">
-            <img src="assets/images/logo.png" alt="Logo Exorcist Fandub">
-        </div>
-        <ul>
-            <li><a href="#estrenos">Últimos Estrenos</a></li>
-            <li><a href="#contenido">Contenido</a></li>
-            <li><a href="#series">Series</a></li>
-            <li><a href="#peliculas">Películas</a></li>
-        </ul>
-    </nav>
-
-    <!-- Sección de Últimos Estrenos -->
-    <section id="estrenos">
-        <h2>Últimos Estrenos</h2>
-        <div class="content-grid" id="estrenos-list">
-            <!-- Contenido de los últimos estrenos cargado dinámicamente -->
-        </div>
+    <header>
+        <img src="assets/images/logo.png" alt="Logo" class="logo">
+        <h1 class="titulo">Exorcist Fandub</h1>
+        <input type="text" id="search-bar" placeholder="Buscar contenido...">
+    </header>
+    
+    <section class="banner">
+        <img src="assets/images/banner.jpg" alt="Banner principal">
     </section>
-
-    <!-- Sección de Contenido -->
-    <section id="contenido">
-        <h2>Contenido</h2>
-        <div class="content-grid" id="contenido-list">
-            <!-- Contenido cargado dinámicamente -->
+    
+    <main>
+        <h2 class="seccion-titulo">Últimos Estrenos</h2>
+        <div class="carrusel" id="carrusel">
+            <!-- Carrusel dinámico -->
         </div>
-    </section>
-
-    <!-- Sección de Series -->
-    <section id="series">
-        <h2>Series</h2>
-        <div class="content-grid" id="series-list">
-            <!-- Series cargadas dinámicamente -->
+        
+        <h2 class="seccion-titulo">Contenido</h2>
+        <div class="filtros">
+            <button onclick="filtrarEstado('todos')">Todos</button>
+            <button onclick="filtrarEstado('emision')">En emisión</button>
+            <button onclick="filtrarEstado('finalizado')">Finalizado</button>
         </div>
-    </section>
-
-    <!-- Sección de Películas -->
-    <section id="peliculas">
-        <h2>Películas</h2>
-        <div class="content-grid" id="peliculas-list">
-            <!-- Películas cargadas dinámicamente -->
+        
+        <div class="filtros-genero">
+            <button onclick="filtrarGenero('accion')">Acción</button>
+            <button onclick="filtrarGenero('comedia')">Comedia</button>
+            <button onclick="filtrarGenero('drama')">Drama</button>
         </div>
-    </section>
 
-    <!-- Modal de Detalles -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span id="closeModal" class="close">&times;</span>
-            <h3 id="modalTitle"></h3>
-            <p id="modalDescription"></p>
-            <button id="addFavorite" class="favorite-btn">Agregar a Favoritos</button>
+        <div class="contenedor-categorias" id="contenedorSeries">
+            <!-- Contenido dinámico -->
         </div>
-    </div>
-
+    </main>
+    
     <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,82 +1,76 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const estrenosList = document.getElementById('estrenos-list');
-    const contenidoList = document.getElementById('contenido-list');
-    const seriesList = document.getElementById('series-list');
-    const peliculasList = document.getElementById('peliculas-list');
-    const modal = document.getElementById('modal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDescription = document.getElementById('modalDescription');
-    const closeModal = document.getElementById('closeModal');
-    const addFavorite = document.getElementById('addFavorite');
+document.addEventListener("DOMContentLoaded", function () {
+    cargarCarrusel();
+    cargarContenido();
+    configurarBusqueda();
+});
 
-    // Cargar contenido desde contenido.json
-    const loadContent = async () => {
-        const response = await fetch('contenido.json');
-        const data = await response.json();
-        displayContent(data);
-    };
+function cargarCarrusel() {
+    const carrusel = document.getElementById("carrusel");
+    carrusel.innerHTML = `
+        <div class="slide"><img src="assets/images/ejemplo.jpg" alt="Estreno 1" loading="lazy"></div>
+        <div class="slide"><img src="assets/images/ejemplo2.jpg" alt="Estreno 2" loading="lazy"></div>
+    `;
+}
 
-    const displayContent = (data) => {
-        estrenosList.innerHTML = '';
-        contenidoList.innerHTML = '';
-        seriesList.innerHTML = '';
-        peliculasList.innerHTML = '';
+function cargarContenido() {
+    const contenedor = document.getElementById("contenedorSeries");
+    const contenido = [
+        { titulo: "Serie Ejemplo", imagen: "assets/images/ejemplo.jpg", estado: "emision", genero: "accion" },
+        { titulo: "Película Ejemplo", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado", genero: "comedia" }
+    ];
+    
+    contenedor.innerHTML = contenido.map(item => `
+        <div class="tarjeta" data-estado="${item.estado}" data-genero="${item.genero}">
+            <img src="${item.imagen}" alt="${item.titulo}" loading="lazy">
+            <p>${item.titulo}</p>
+            <button class="favorito" onclick="marcarFavorito(this)">⭐ Favorito</button>
+        </div>
+    `).join('');
+}
 
-        data.estrenos.forEach(item => {
-            const contentItem = createContentItem(item);
-            estrenosList.appendChild(contentItem);
-        });
-
-        data.contenido.forEach(item => {
-            const contentItem = createContentItem(item);
-            contenidoList.appendChild(contentItem);
-        });
-
-        data.series.forEach(item => {
-            const contentItem = createContentItem(item);
-            seriesList.appendChild(contentItem);
-        });
-
-        data.peliculas.forEach(item => {
-            const contentItem = createContentItem(item);
-            peliculasList.appendChild(contentItem);
-        });
-    };
-
-    const createContentItem = (item) => {
-        const div = document.createElement('div');
-        div.classList.add('content-item');
-        div.innerHTML = `
-            <img src="${item.imagen}" alt="${item.titulo}">
-            <h3>${item.titulo}</h3>
-            <p>${item.descripcion}</p>
-        `;
-        div.addEventListener('click', () => {
-            showModal(item);
-        });
-        return div;
-    };
-
-    const showModal = (item) => {
-        modalTitle.textContent = item.titulo;
-        modalDescription.textContent = item.descripcion;
-        modal.style.display = 'flex';
-    };
-
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    addFavorite.addEventListener('click', () => {
-        alert('¡Agregado a favoritos!');
-    });
-
-    // Funcionalidad de scroll infinito
-    window.addEventListener('scroll', () => {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-            loadContent(); // Cargar más contenido cuando se llegue al final
+function filtrarEstado(estado) {
+    const tarjetas = document.querySelectorAll(".tarjeta");
+    tarjetas.forEach(tarjeta => {
+        if (estado === "todos" || tarjeta.getAttribute("data-estado") === estado) {
+            tarjeta.style.display = "block";
+        } else {
+            tarjeta.style.display = "none";
         }
     });
+}
 
-    loadContent();
-});
+function filtrarGenero(genero) {
+    const tarjetas = document.querySelectorAll(".tarjeta");
+    tarjetas.forEach(tarjeta => {
+        if (tarjeta.getAttribute("data-genero") === genero) {
+            tarjeta.style.display = "block";
+        } else {
+            tarjeta.style.display = "none";
+        }
+    });
+}
+
+function configurarBusqueda() {
+    const searchBar = document.getElementById("search-bar");
+    searchBar.addEventListener("input", function() {
+        const term = searchBar.value.toLowerCase();
+        const tarjetas = document.querySelectorAll(".tarjeta");
+        tarjetas.forEach(tarjeta => {
+            const titulo = tarjeta.querySelector("p").textContent.toLowerCase();
+            if (titulo.includes(term)) {
+                tarjeta.style.display = "block";
+            } else {
+                tarjeta.style.display = "none";
+            }
+        });
+    });
+}
+
+function marcarFavorito(button) {
+    button.classList.toggle("favorito-marcar");
+    if (button.classList.contains("favorito-marcar")) {
+        button.textContent = "🌟 Favorito agregado";
+    } else {
+        button.textContent = "⭐ Favorito";
+    }
+}
