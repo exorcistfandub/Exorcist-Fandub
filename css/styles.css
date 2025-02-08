@@ -1,35 +1,46 @@
 /* Estilos generales */
 body {
-    background: linear-gradient(to bottom, #000428, #004e92);
+    background: linear-gradient(to bottom, #2b3d5c, #3a6d98);
     color: white;
     font-family: 'Uncial Antiqua', cursive;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* Encabezado */
 header {
     text-align: center;
     padding: 20px;
+    width: 100%;
 }
 
 .logo-container {
     margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .logo {
     width: 150px;
+    max-width: 100%;
+    height: auto;
 }
 
 .titulo {
     font-size: 3rem;
     margin-top: 10px;
     font-family: 'Uncial Antiqua', cursive;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
 /* Sección de portadas */
 .portadas {
     margin-top: 20px;
     text-align: center;
+    width: 80%;
 }
 
 .portadas-container {
@@ -47,11 +58,13 @@ header {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+/* Títulos de sección */
 .seccion-titulo {
     text-align: center;
     font-size: 2rem;
     margin-top: 20px;
     color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
 /* Formulario de agregar contenido */
@@ -80,7 +93,7 @@ header {
 
 .form-agregar-contenido button {
     padding: 10px 20px;
-    background-color: #004e92;
+    background-color: #2b3d5c;
     border: none;
     border-radius: 5px;
     color: white;
@@ -89,5 +102,5 @@ header {
 }
 
 .form-agregar-contenido button:hover {
-    background-color: #00316e;
+    background-color: #3a6d98;
 }
