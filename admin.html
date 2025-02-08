@@ -8,19 +8,19 @@
 </head>
 <body>
     <header>
-        <h1>Panel de Administración</h1>
+        <h1>Panel de Administración - Exorcist Fandub</h1>
     </header>
 
     <section>
-        <h2>Agregar Nuevo Contenido</h2>
+        <h2>Agregar nuevo contenido</h2>
         <form id="form-agregar-contenido">
             <label for="titulo">Título</label>
             <input type="text" id="titulo" name="titulo" required>
 
-            <label for="tipo">Tipo de Contenido</label>
+            <label for="tipo">Tipo de contenido</label>
             <select id="tipo" name="tipo" required>
+                <option value="pelicula">Película</option>
                 <option value="serie">Serie</option>
-                <option value="dorama">Dorama</option>
             </select>
 
             <label for="estado">Estado</label>
@@ -29,13 +29,13 @@
                 <option value="finalizado">Finalizado</option>
             </select>
 
-            <label for="imagen">Imagen de Portada</label>
-            <input type="file" id="imagen" name="imagen" accept="image/*" required>
+            <label for="imagen">Imagen (URL)</label>
+            <input type="url" id="imagen" name="imagen" required>
 
             <button type="submit">Agregar</button>
         </form>
     </section>
 
-    <script src="js/admin.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
