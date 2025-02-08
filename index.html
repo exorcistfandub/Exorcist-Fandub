@@ -5,43 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exorcist Fandub</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <img src="assets/images/logo.png" alt="Logo" class="logo">
+        <img class="logo" src="assets/images/logo.png" alt="Exorcist Fandub">
         <h1 class="titulo">Exorcist Fandub</h1>
-        <input type="text" id="search-bar" placeholder="Buscar contenido...">
     </header>
     
     <section class="banner">
-        <img src="assets/images/banner.jpg" alt="Banner principal">
+        <img src="assets/images/banner.jpg" alt="Banner Exorcist Fandub">
     </section>
-    
-    <main>
-        <h2 class="seccion-titulo">Últimos Estrenos</h2>
-        <div class="carrusel" id="carrusel">
-            <!-- Carrusel dinámico -->
+
+    <section class="seccion-titulo">
+        <h2>Últimos Estrenos</h2>
+    </section>
+
+    <section class="contenedor-categorias">
+        <div class="categoria" id="ultimos-estrenos">
+            <h3>Últimos Estrenos</h3>
+            <div id="carrusel" class="carrusel"></div>
         </div>
         
-        <h2 class="seccion-titulo">Contenido</h2>
-        <div class="filtros">
-            <button onclick="filtrarEstado('todos')">Todos</button>
-            <button onclick="filtrarEstado('emision')">En emisión</button>
-            <button onclick="filtrarEstado('finalizado')">Finalizado</button>
-        </div>
-        
-        <div class="filtros-genero">
-            <button onclick="filtrarGenero('accion')">Acción</button>
-            <button onclick="filtrarGenero('comedia')">Comedia</button>
-            <button onclick="filtrarGenero('drama')">Drama</button>
+        <div class="categoria" id="contenido">
+            <h3>Contenido</h3>
+            <div id="contenedorSeries" class="contenedor"></div>
         </div>
 
-        <div class="contenedor-categorias" id="contenedorSeries">
-            <!-- Contenido dinámico -->
+        <div class="categoria" id="series">
+            <h3>Series</h3>
+            <div id="contenedorSeries" class="contenedor"></div>
         </div>
-    </main>
-    
+
+        <div class="categoria" id="peliculas">
+            <h3>Películas</h3>
+            <div id="contenedorPeliculas" class="contenedor"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Exorcist Fandub</p>
+    </footer>
+
     <script src="js/script.js"></script>
 </body>
 </html>
+
