@@ -6,16 +6,6 @@ body {
     padding: 0;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-}
-
-main {
-    min-height: 100vh; /* Hace que el contenido ocupe al menos el 100% de la altura de la ventana */
-    padding-bottom: 20px;
-}
-
 header {
     text-align: center;
     padding: 20px;
@@ -85,4 +75,17 @@ header {
 
 .filtros button:hover {
     background: #0066cc;
+}
+
+/* Agregado para la nueva estructura */
+#contenedorContenido {
+    margin-top: 20px;
+}
+
+#contenedorPeliculas {
+    margin-top: 20px;
+}
+
+#contenedorSeries {
+    margin-top: 20px;
 }

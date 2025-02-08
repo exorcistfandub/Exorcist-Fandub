@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     cargarCarrusel();
     cargarContenido();
+    cargarPeliculas();
+    cargarSeries();
 });
 
 function cargarCarrusel() {
@@ -12,13 +14,43 @@ function cargarCarrusel() {
 }
 
 function cargarContenido() {
-    const contenedor = document.getElementById("contenedorSeries");
+    const contenedor = document.getElementById("contenedorContenido");
     const contenido = [
-        { titulo: "Serie Ejemplo", imagen: "assets/images/ejemplo.jpg", estado: "emision" },
-        { titulo: "Serie Ejemplo 2", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado" }
+        { titulo: "Contenido Ejemplo 1", imagen: "assets/images/ejemplo.jpg", estado: "emision" },
+        { titulo: "Contenido Ejemplo 2", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado" }
     ];
     
     contenedor.innerHTML = contenido.map(item => `
+        <div class="tarjeta" data-estado="${item.estado}">
+            <img src="${item.imagen}" alt="${item.titulo}">
+            <p>${item.titulo}</p>
+        </div>
+    `).join('');
+}
+
+function cargarPeliculas() {
+    const contenedor = document.getElementById("contenedorPeliculas");
+    const peliculas = [
+        { titulo: "Película Ejemplo 1", imagen: "assets/images/ejemplo.jpg", estado: "finalizado" },
+        { titulo: "Película Ejemplo 2", imagen: "assets/images/ejemplo2.jpg", estado: "emision" }
+    ];
+
+    contenedor.innerHTML = peliculas.map(item => `
+        <div class="tarjeta" data-estado="${item.estado}">
+            <img src="${item.imagen}" alt="${item.titulo}">
+            <p>${item.titulo}</p>
+        </div>
+    `).join('');
+}
+
+function cargarSeries() {
+    const contenedor = document.getElementById("contenedorSeries");
+    const series = [
+        { titulo: "Serie Ejemplo 1", imagen: "assets/images/ejemplo.jpg", estado: "emision" },
+        { titulo: "Serie Ejemplo 2", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado" }
+    ];
+    
+    contenedor.innerHTML = series.map(item => `
         <div class="tarjeta" data-estado="${item.estado}">
             <img src="${item.imagen}" alt="${item.titulo}">
             <p>${item.titulo}</p>
