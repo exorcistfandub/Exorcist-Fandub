@@ -1,14 +1,36 @@
-// Aquí puedes agregar funcionalidades interactivas para el panel de administración, como la validación de formularios, etc.
-// En este caso, como es un ejemplo, solo lo mantengo para la estructura.
+document.getElementById("form-agregar-contenido").addEventListener("submit", function(event) {
+    event.preventDefault();
 
-document.querySelector('form').addEventListener('submit', function(event) {
-    // Validación simple (aunque el HTML ya tiene validaciones, esto es solo un ejemplo)
-    const title = document.getElementById('titulo').value;
-    const category = document.getElementById('categoria').value;
-    const estado = document.getElementById('estado').value;
+    const titulo = document.getElementById("titulo").value;
+    const tipo = document.getElementById("tipo").value;
+    const estado = document.getElementById("estado").value;
+    const imagen = document.getElementById("imagen").files[0];
 
-    if (!title || !category || !estado) {
-        alert("Por favor, llena todos los campos.");
-        event.preventDefault();
+    if (imagen) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const nuevoContenido = {
+                titulo,
+                tipo,
+                estado,
+                imagen: e.target.result
+            };
+
+            // Mostrar el nuevo contenido en la página
+            const contentGrid = document.querySelector('.content-grid');
+            const nuevoItem = document.createElement('div');
+            nuevoItem.classList.add('item');
+            nuevoItem.innerHTML = `
+                <img src="${nuevoContenido.imagen}" alt="${nuevoContenido.titulo}">
+                <h3>${nuevoContenido.titulo}</h3>
+                <p>Estado: <span class="state ${nuevoContenido.estado === 'emision' ? 'green' : 'red'}">${nuevoContenido.estado === 'emision' ? 'En Emisión' : 'Finalizado'}</span></p>
+                <button class="view-button">Ver Más</button>
+            `;
+            contentGrid.appendChild(nuevoItem);
+        };
+        reader.readAsDataURL(imagen);
     }
+
+    // Limpiar el formulario
+    document.getElementById("form-agregar-contenido").reset();
 });
