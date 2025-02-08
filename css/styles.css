@@ -4,12 +4,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
-
-/* Modo Oscuro */
-body.dark-mode {
-    background: linear-gradient(to bottom, #2c3e50, #34495e);
-    color: #ecf0f1;
+    overflow-x: hidden;
 }
 
 header {
@@ -29,7 +24,11 @@ header {
 .banner img {
     width: 100%;
     height: auto;
-    loading: lazy;
+    transition: transform 0.3s ease;
+}
+
+.banner img:hover {
+    transform: scale(1.05);
 }
 
 .seccion-titulo {
@@ -53,6 +52,8 @@ header {
     text-align: center;
     transition: transform 0.3s;
     width: 180px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
 }
 
 .tarjeta:hover {
@@ -63,7 +64,6 @@ header {
     width: 100%;
     height: auto;
     border-radius: 5px;
-    loading: lazy;
 }
 
 .filtros {
@@ -79,17 +79,37 @@ header {
     margin: 5px;
     cursor: pointer;
     border-radius: 5px;
+    transition: background 0.3s;
 }
 
 .filtros button:hover {
     background: #0066cc;
 }
 
-/* Modo Oscuro */
-body.dark-mode .filtros button {
-    background: #34495e;
+footer {
+    background-color: #000;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
-body.dark-mode .filtros button:hover {
-    background: #2c3e50;
+/* Animación de aparición */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .contenedor-categorias {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
