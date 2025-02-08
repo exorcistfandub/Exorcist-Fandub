@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Exorcist Fandub: Tu sitio de animes, doramas y películas con opciones de filtrado y recomendaciones personalizadas.">
     <title>Exorcist Fandub</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
@@ -12,7 +11,7 @@
     <header>
         <img src="assets/images/logo.png" alt="Logo" class="logo">
         <h1 class="titulo">Exorcist Fandub</h1>
-        <button id="modo-oscuro" class="modo-oscuro">Modo Oscuro</button>
+        <input type="text" id="search-bar" placeholder="Buscar contenido...">
     </header>
     
     <section class="banner">
@@ -22,37 +21,24 @@
     <main>
         <h2 class="seccion-titulo">Últimos Estrenos</h2>
         <div class="carrusel" id="carrusel">
-            <!-- Carrusel dinámico con navegación -->
-            <div class="carrusel-item">
-                <img src="assets/images/ejemplo.jpg" alt="Estreno 1">
-            </div>
-            <div class="carrusel-item">
-                <img src="assets/images/ejemplo2.jpg" alt="Estreno 2">
-            </div>
-            <button class="prev" onclick="cambiarCarrusel(-1)">&#10094;</button>
-            <button class="next" onclick="cambiarCarrusel(1)">&#10095;</button>
+            <!-- Carrusel dinámico -->
         </div>
-
+        
         <h2 class="seccion-titulo">Contenido</h2>
         <div class="filtros">
             <button onclick="filtrarEstado('todos')">Todos</button>
             <button onclick="filtrarEstado('emision')">En emisión</button>
             <button onclick="filtrarEstado('finalizado')">Finalizado</button>
-            <input type="text" id="buscar" placeholder="Buscar contenido..." onkeyup="buscarContenido()">
         </div>
         
-        <div class="contenedor-categorias" id="contenedorContenido">
-            <!-- Contenido dinámico -->
+        <div class="filtros-genero">
+            <button onclick="filtrarGenero('accion')">Acción</button>
+            <button onclick="filtrarGenero('comedia')">Comedia</button>
+            <button onclick="filtrarGenero('drama')">Drama</button>
         </div>
 
-        <h2 class="seccion-titulo">Series</h2>
         <div class="contenedor-categorias" id="contenedorSeries">
-            <!-- Series dinámicas -->
-        </div>
-
-        <h2 class="seccion-titulo">Películas</h2>
-        <div class="contenedor-categorias" id="contenedorPeliculas">
-            <!-- Películas dinámicas -->
+            <!-- Contenido dinámico -->
         </div>
     </main>
     

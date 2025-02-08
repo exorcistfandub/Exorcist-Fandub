@@ -4,7 +4,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    transition: background 0.3s;
 }
 
 header {
@@ -19,19 +18,6 @@ header {
 .titulo {
     font-family: 'Uncial Antiqua', cursive;
     font-size: 2rem;
-}
-
-.modo-oscuro {
-    background: #004e92;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.modo-oscuro:hover {
-    background: #0066cc;
 }
 
 .banner img {
@@ -60,13 +46,6 @@ header {
     text-align: center;
     transition: transform 0.3s;
     width: 180px;
-    opacity: 0;
-    animation: aparecer 1s forwards;
-}
-
-@keyframes aparecer {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }
 
 .tarjeta:hover {
@@ -77,6 +56,7 @@ header {
     width: 100%;
     height: auto;
     border-radius: 5px;
+    loading: lazy;
 }
 
 .filtros {
@@ -84,7 +64,7 @@ header {
     margin: 20px 0;
 }
 
-.filtros button, .filtros input {
+.filtros button {
     background: #004e92;
     color: white;
     border: none;
@@ -94,35 +74,25 @@ header {
     border-radius: 5px;
 }
 
-.filtros button:hover, .filtros input:focus {
+.filtros button:hover {
     background: #0066cc;
 }
 
-.carrusel {
-    position: relative;
-    overflow: hidden;
+.filtros-genero {
+    text-align: center;
+    margin: 20px 0;
 }
 
-.carrusel-item {
-    display: inline-block;
-    width: 100%;
-}
-
-.carrusel button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+.filtros-genero button {
+    background: #004e92;
     color: white;
-    padding: 10px;
     border: none;
+    padding: 10px 15px;
+    margin: 5px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
-.prev {
-    left: 10px;
-}
-
-.next {
-    right: 10px;
+.filtros-genero button:hover {
+    background: #0066cc;
 }
