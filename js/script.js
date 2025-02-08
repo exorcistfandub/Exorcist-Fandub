@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     cargarCarrusel();
     cargarContenido();
+    iniciarCarruselAutomatico();
 });
 
 function cargarCarrusel() {
@@ -12,28 +13,26 @@ function cargarCarrusel() {
 }
 
 function cargarContenido() {
-    const contenedorSeries = document.getElementById("contenedorSeries");
-    const contenedorPeliculas = document.getElementById("contenedorPeliculas");
-
     const contenido = [
-        { titulo: "Serie Ejemplo", imagen: "assets/images/ejemplo.jpg", estado: "emision", tipo: "serie" },
-        { titulo: "Dorama Ejemplo", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado", tipo: "serie" },
-        { titulo: "Película Ejemplo", imagen: "assets/images/ejemplo3.jpg", estado: "finalizado", tipo: "pelicula" }
+        { titulo: "Serie Ejemplo", imagen: "assets/images/ejemplo.jpg", estado: "emision" },
+        { titulo: "Película Ejemplo", imagen: "assets/images/ejemplo2.jpg", estado: "finalizado" }
     ];
-
-    contenido.forEach(item => {
-        const tarjeta = `
-            <div class="tarjeta" data-estado="${item.estado}">
-                <img src="${item.imagen}" alt="${item.titulo}">
-                <p>${item.titulo}</p>
-            </div>
-        `;
-        if (item.tipo === "serie") {
-            contenedorSeries.innerHTML += tarjeta;
-        } else if (item.tipo === "pelicula") {
-            contenedorPeliculas.innerHTML += tarjeta;
-        }
-    });
+    
+    const carruselContenido = document.getElementById("contenido");
+    carruselContenido.innerHTML = contenido.map(item => `
+        <div class="tarjeta" data-estado="${item.estado}">
+            <img src="${item.imagen}" alt="${item.titulo}">
+            <p>${item.titulo}</p>
+        </div>
+    `).join('');
+    
+    const contenedorSeries = document.getElementById("contenedorSeries");
+    contenedorSeries.innerHTML = contenido.map(item => `
+        <div class="tarjeta" data-estado="${item.estado}">
+            <img src="${item.imagen}" alt="${item.titulo}">
+            <p>${item.titulo}</p>
+        </div>
+    `).join('');
 }
 
 function filtrarEstado(estado) {
@@ -45,4 +44,14 @@ function filtrarEstado(estado) {
             tarjeta.style.display = "none";
         }
     });
+}
+
+function iniciarCarruselAutomatico() {
+    let index = 0;
+    const slides = document.querySelectorAll(".carrusel .slide");
+    setInterval(() => {
+        index = (index + 1) % slides.length;
+        const offset = -index * 100;
+        document.querySelector(".carrusel").style.transform = `translateX(${offset}%)`;
+    }, 3000);
 }

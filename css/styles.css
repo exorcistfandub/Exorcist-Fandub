@@ -1,30 +1,36 @@
 body {
     background: linear-gradient(to bottom, #000428, #004e92);
     color: white;
-    font-family: Arial, sans-serif;
+    font-family: 'Uncial Antiqua', cursive;
     margin: 0;
     padding: 0;
 }
+
 header {
     text-align: center;
     padding: 20px;
 }
+
 .logo {
     width: 150px;
 }
+
 .titulo {
     font-family: 'Uncial Antiqua', cursive;
     font-size: 2rem;
 }
+
 .banner img {
     width: 100%;
     height: auto;
 }
+
 .seccion-titulo {
     text-align: center;
     font-size: 1.8rem;
     margin-top: 20px;
 }
+
 .contenedor-categorias {
     display: flex;
     flex-wrap: wrap;
@@ -32,6 +38,7 @@ header {
     gap: 20px;
     padding: 20px;
 }
+
 .tarjeta {
     background: rgba(255, 255, 255, 0.1);
     padding: 15px;
@@ -39,19 +46,25 @@ header {
     text-align: center;
     transition: transform 0.3s;
     width: 180px;
+    cursor: pointer;
 }
+
 .tarjeta:hover {
     transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.2);
 }
+
 .tarjeta img {
     width: 100%;
     height: auto;
     border-radius: 5px;
 }
+
 .filtros {
     text-align: center;
     margin: 20px 0;
 }
+
 .filtros button {
     background: #004e92;
     color: white;
@@ -61,6 +74,31 @@ header {
     cursor: pointer;
     border-radius: 5px;
 }
+
 .filtros button:hover {
     background: #0066cc;
+}
+
+.carrusel {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.carrusel img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carrusel .slide {
+    min-width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .contenedor-categorias {
+        flex-direction: column;
+        align-items: center;
+    }
 }
