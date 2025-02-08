@@ -96,3 +96,36 @@ header {
 .filtros-genero button:hover {
     background: #0066cc;
 }
+
+/* Estilos del carrusel */
+.carrusel {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    gap: 10px;
+    justify-content: center;
+}
+
+.slide {
+    flex-shrink: 0;
+    width: 80%;
+    max-width: 400px;
+    transition: transform 0.5s ease;
+}
+
+.carrusel img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Estilos para el contenedor de comentarios */
+.comentarios {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.comentarios p {
+    font-size: 1.2rem;
+    color: #bbb;
+}

@@ -6,10 +6,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function cargarCarrusel() {
     const carrusel = document.getElementById("carrusel");
-    carrusel.innerHTML = `
-        <div class="slide"><img src="assets/images/ejemplo.jpg" alt="Estreno 1" loading="lazy"></div>
-        <div class="slide"><img src="assets/images/ejemplo2.jpg" alt="Estreno 2" loading="lazy"></div>
-    `;
+    const imagenes = [
+        "assets/images/ejemplo.jpg",
+        "assets/images/ejemplo2.jpg"
+    ];
+    carrusel.innerHTML = imagenes.map(img => `
+        <div class="slide">
+            <img src="${img}" alt="Estreno" loading="lazy">
+        </div>
+    `).join('');
+    
+    let index = 0;
+    setInterval(() => {
+        const slides = carrusel.querySelectorAll('.slide');
+        slides.forEach(slide => {
+            slide.style.transform = `translateX(-${index * 100}%)`;
+        });
+        index = (index + 1) % slides.length;
+    }, 3000); // Cambiar cada 3 segundos
 }
 
 function cargarContenido() {
