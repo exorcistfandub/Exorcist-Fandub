@@ -1,62 +1,82 @@
-// Obtener elementos del DOM
-const searchInput = document.getElementById('search');
-const resultsContainer = document.getElementById('search-results');
-const contentSection = document.getElementById('content');
-const modal = document.getElementById('content-modal');
-const closeModal = document.getElementById('close-modal');
+document.addEventListener('DOMContentLoaded', () => {
+    const estrenosList = document.getElementById('estrenos-list');
+    const contenidoList = document.getElementById('contenido-list');
+    const seriesList = document.getElementById('series-list');
+    const peliculasList = document.getElementById('peliculas-list');
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const closeModal = document.getElementById('closeModal');
+    const addFavorite = document.getElementById('addFavorite');
 
-// Función para mostrar resultados de búsqueda
-searchInput.addEventListener('input', async (e) => {
-    const query = e.target.value;
-    if (query.length > 2) {
-        const response = await fetch(`/buscar?query=${query}`);
+    // Cargar contenido desde contenido.json
+    const loadContent = async () => {
+        const response = await fetch('contenido.json');
         const data = await response.json();
-        displaySearchResults(data);
-    } else {
-        resultsContainer.innerHTML = '';
-    }
-});
+        displayContent(data);
+    };
 
-function displaySearchResults(data) {
-    resultsContainer.innerHTML = data.map(item => `
-        <div class="result-item" onclick="showDetails(${item.id})">
-            <img src="${item.image}" alt="${item.title}">
-            <h4>${item.title}</h4>
-        </div>
-    `).join('');
-}
+    const displayContent = (data) => {
+        estrenosList.innerHTML = '';
+        contenidoList.innerHTML = '';
+        seriesList.innerHTML = '';
+        peliculasList.innerHTML = '';
 
-// Mostrar detalles del contenido en un modal
-function showDetails(id) {
-    const content = contentData.find(item => item.id === id);
-    document.getElementById('content-description').textContent = content.description;
-    modal.style.display = 'flex';
-}
+        data.estrenos.forEach(item => {
+            const contentItem = createContentItem(item);
+            estrenosList.appendChild(contentItem);
+        });
 
-// Cerrar el modal
-closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
-});
+        data.contenido.forEach(item => {
+            const contentItem = createContentItem(item);
+            contenidoList.appendChild(contentItem);
+        });
 
-// Función para cargar contenido de manera infinita (scroll infinito)
-window.addEventListener('scroll', () => {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
-        loadMoreContent();
-    }
-});
+        data.series.forEach(item => {
+            const contentItem = createContentItem(item);
+            seriesList.appendChild(contentItem);
+        });
 
-async function loadMoreContent() {
-    const response = await fetch('/getMoreContent');
-    const newContent = await response.json();
-    newContent.forEach(item => {
-        contentSection.innerHTML += `
-            <div class="content-item">
-                <img src="${item.image}" alt="${item.title}">
-                <div class="content-info">
-                    <h3>${item.title}</h3>
-                    <button class="favorite-btn">❤️</button>
-                </div>
-            </div>
+        data.peliculas.forEach(item => {
+            const contentItem = createContentItem(item);
+            peliculasList.appendChild(contentItem);
+        });
+    };
+
+    const createContentItem = (item) => {
+        const div = document.createElement('div');
+        div.classList.add('content-item');
+        div.innerHTML = `
+            <img src="${item.imagen}" alt="${item.titulo}">
+            <h3>${item.titulo}</h3>
+            <p>${item.descripcion}</p>
         `;
+        div.addEventListener('click', () => {
+            showModal(item);
+        });
+        return div;
+    };
+
+    const showModal = (item) => {
+        modalTitle.textContent = item.titulo;
+        modalDescription.textContent = item.descripcion;
+        modal.style.display = 'flex';
+    };
+
+    closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
     });
-}
+
+    addFavorite.addEventListener('click', () => {
+        alert('¡Agregado a favoritos!');
+    });
+
+    // Funcionalidad de scroll infinito
+    window.addEventListener('scroll', () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+            loadContent(); // Cargar más contenido cuando se llegue al final
+        }
+    });
+
+    loadContent();
+});
