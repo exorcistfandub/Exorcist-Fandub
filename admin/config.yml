@@ -1,0 +1,17 @@
+backend:
+  name: git-gateway
+  branch: main  # O la rama que estés usando en GitHub
+
+media_folder: "assets/images"  # Carpeta donde se guardarán imágenes
+public_folder: "/assets/images"
+
+collections:
+  - name: "contenido"
+    label: "Contenido"
+    folder: "contenido"
+    create: true
+    fields:
+      - { name: "title", label: "Título", widget: "string" }
+      - { name: "description", label: "Descripción", widget: "text" }
+      - { name: "image", label: "Imagen", widget: "image" }
+      - { name: "category", label: "Categoría", widget: "select", options: ["Película", "Serie"] }
