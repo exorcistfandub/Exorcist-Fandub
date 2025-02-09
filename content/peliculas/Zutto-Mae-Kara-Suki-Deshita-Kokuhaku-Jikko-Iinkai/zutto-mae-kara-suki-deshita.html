@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zutto Mae Kara Suki Deshita - Kokuhaku Jikko Iinkai</title>
+</head>
+<body>
+    <h1>Zutto Mae Kara Suki Deshita - Kokuhaku Jikko Iinkai</h1>
+
+    <p>Disfruta de la película:</p>
+
+    <!-- Aquí insertamos el iframe con el video -->
+    <div id="video-container"></div>
+
+    <p>O haz clic <a href="https://vimeo.com/1054867239/c3a49d3632" target="_blank">aquí</a> para verla en Vimeo.</p>
+
+    <script>
+        // Función para cargar el enlace desde el archivo txt
+        fetch('content/peliculas/zutto-mae-kara-suki-deshita/link.txt')
+            .then(response => response.text())
+            .then(data => {
+                const videoUrl = data.trim(); // Limpiar posibles saltos de línea
+                const iframe = `<iframe src="https://player.vimeo.com/video/${videoUrl.split('/')[3]}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+                document.getElementById('video-container').innerHTML = iframe; // Insertamos el iframe en el contenedor
+            })
+            .catch(error => {
+                console.error('Error al cargar el enlace del video:', error);
+            });
+    </script>
+
+</body>
+</html>

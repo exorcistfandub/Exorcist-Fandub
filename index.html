@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exorcist Fandub</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="assets/images/logo.png" alt="Logo" class="logo">
+        <h1 class="titulo">Exorcist Fandub</h1>
+        <input type="text" id="search-bar" placeholder="Buscar contenido...">
+        <button id="theme-toggle">Modo Oscuro</button>
+    </header>
+    
+    <section class="banner">
+        <img src="assets/images/banner.jpg" alt="Banner principal">
+    </section>
+    
+    <main>
+        <h2 class="seccion-titulo">Últimos Estrenos</h2>
+        <div class="carrusel" id="carrusel">
+            <!-- Carrusel dinámico -->
+        </div>
+        
+        <h2 class="seccion-titulo">Contenido</h2>
+        <div class="filtros">
+            <button onclick="filtrarEstado('todos')">Todos</button>
+            <button onclick="filtrarEstado('emision')">En emisión</button>
+            <button onclick="filtrarEstado('finalizado')">Finalizado</button>
+        </div>
+        
+        <div class="filtros-genero">
+            <button onclick="filtrarGenero('accion')">Acción</button>
+            <button onclick="filtrarGenero('comedia')">Comedia</button>
+            <button onclick="filtrarGenero('drama')">Drama</button>
+        </div>
+
+        <div class="contenedor-categorias" id="contenedorSeries">
+            <!-- Contenido dinámico -->
+        </div>
+
+        <h3>Recomendaciones</h3>
+        <div class="recomendaciones" id="recomendaciones">
+            <!-- Recomendaciones basadas en favoritos o preferencias -->
+        </div>
+    </main>
+    
+    <!-- Agregar Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js"></script>
+    <!-- Tu archivo JS con la configuración de Firebase -->
+    <script src="js/firebase-config.js"></script>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+[
+    {
+        "titulo": "Serie Ejemplo",
+        "imagen": "assets/images/ejemplo.jpg",
+        "estado": "emision",
+        "tipo": "serie"
+    },
+    {
+        "titulo": "Película Ejemplo",
+        "imagen": "assets/images/pelicula.jpg",
+        "estado": "finalizado",
+        "tipo": "pelicula"
+    },
+    {
+        "titulo": "Dorama Ejemplo",
+        "imagen": "assets/images/dorama.jpg",
+        "estado": "emision",
+        "tipo": "serie"
+    }
+]
